@@ -244,7 +244,7 @@ export function SkillsSection() {
                           >
                             <TechLogo
                               name={skill.name}
-                              size={24}
+                              size={26}
                               className="shrink-0"
                             />
                             <span className="text-sm font-medium tracking-tight text-[#18181B]">
