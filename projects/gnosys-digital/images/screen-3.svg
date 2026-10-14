@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pk3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140810"/>
+      <stop offset="100%" stop-color="#0a0408"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#pk3)"/>
+  <rect x="40" y="40" width="920" height="520" rx="12" fill="#180a14" stroke="#ec4899" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="40" width="920" height="42" rx="12" fill="#240f1f"/>
+  <circle cx="65" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="82" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="99" cy="61" r="5" fill="#10b981"/>
+  <text x="125" y="66" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Case Study Editorial &amp; Result Metrics</text>
+
+  <g transform="translate(70, 110)">
+    <rect x="0" y="0" width="860" height="420" rx="8" fill="#120710" stroke="#3d152b" stroke-width="1"/>
+    <text x="30" y="40" fill="#f8fafc" font-family="system-ui" font-size="18" font-weight="800">Case Study: FinTech Unicorn Rebrand &amp; Portal Migration</text>
+    <text x="30" y="68" fill="#94a3b8" font-family="system-ui" font-size="12">Migrated legacy Angular SPA to modern Next.js App Router with 4x conversion boost</text>
+
+    <g transform="translate(30, 95)">
+      <rect x="0" y="0" width="250" height="110" rx="6" fill="#240f1f" stroke="#ec4899" stroke-width="1"/>
+      <text x="20" y="35" fill="#ec4899" font-family="system-ui" font-size="28" font-weight="800">-68%</text>
+      <text x="20" y="65" fill="#f8fafc" font-family="system-ui" font-size="12" font-weight="600">Bounce Rate Drop</text>
+      <text x="20" y="85" fill="#94a3b8" font-family="system-ui" font-size="10">Sub-second initial server render</text>
+
+      <rect x="275" y="0" width="250" height="110" rx="6" fill="#240f1f" stroke="#a855f7" stroke-width="1"/>
+      <text x="295" y="35" fill="#a855f7" font-family="system-ui" font-size="28" font-weight="800">+140%</text>
+      <text x="295" y="65" fill="#f8fafc" font-family="system-ui" font-size="12" font-weight="600">Sign-Up Throughput</text>
+      <text x="295" y="85" fill="#94a3b8" font-family="system-ui" font-size="10">Frictionless multi-step KYC funnel</text>
+
+      <rect x="550" y="0" width="250" height="110" rx="6" fill="#240f1f" stroke="#f43f5e" stroke-width="1"/>
+      <text x="570" y="35" fill="#f43f5e" font-family="system-ui" font-size="28" font-weight="800">100/100</text>
+      <text x="570" y="65" fill="#f8fafc" font-family="system-ui" font-size="12" font-weight="600">Lighthouse Audit</text>
+      <text x="570" y="85" fill="#94a3b8" font-family="system-ui" font-size="10">Zero cumulative layout shift</text>
+    </g>
+
+    <rect x="30" y="240" width="800" height="145" rx="6" fill="#1a0c16"/>
+    <text x="50" y="275" fill="#f472b6" font-family="system-ui" font-size="13" font-weight="700">Client Testimonial — VP of Product:</text>
+    <text x="50" y="305" fill="#e2e8f0" font-family="system-ui" font-size="13" font-style="italic">"Gnosys Digital overhauled our global brand and engineered a frontend platform that feels alive. Our customers constantly remark on how instantaneous the portal feels."</text>
+  </g>
+</svg>

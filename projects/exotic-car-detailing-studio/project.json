@@ -1,0 +1,86 @@
+{
+  "slug": "exotic-car-detailing-studio",
+  "title": "Exotic Car Detailing Studio",
+  "category": "Full Stack Commercial Web Application",
+  "order": 5,
+  "shortDescription": "A high-end luxury automotive detailing booking and service studio website featuring an interactive package customizer, appointment scheduling, and dark glassmorphic styling.",
+  "overview": "Exotic Car Detailing Studio is a bespoke web platform built for high-end luxury vehicle care, ceramic coating, and paint protection film (PPF) specialists. It pairs a dark, metallic luxury aesthetic with a dynamic service package configurator and a robust scheduling backend.",
+  "problem": "Supercar owners require specialized care packages based on vehicle paint condition, clear coat thickness, and finish type. Standard static web pages failed to convey the premium craftsmanship or provide transparent custom quoting.",
+  "solution": "Created an immersive web experience with dark glassmorphism, interactive package customization, dynamic price calculations based on vehicle class, and clear booking request flows.",
+  "role": "Full Stack Web Developer",
+  "timeline": "2 Months",
+  "featured": true,
+  "liveUrl": "https://exoticcardetailingstudio.com/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "Luxury homepage hero with vehicle category picker and instant estimate calculator.",
+      "alt": "Exotic Car Detailing Studio luxury hero and package builder"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Interactive Before & After paint restoration comparison widget.",
+      "alt": "Interactive split slider showing paint scratch correction"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "Multi-tier ceramic coating package selection with bay availability calendar.",
+      "alt": "Ceramic coating package tier selection modal"
+    }
+  ],
+  "metrics": [
+    { "label": "Conversion", "value": "+38% inquiry rate" },
+    { "label": "Mobile Score", "value": "98 Lighthouse" },
+    { "label": "Render Time", "value": "< 0.8s initial render" },
+    { "label": "Configurator", "value": "Real-time pricing tiers" }
+  ],
+  "technologies": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "Express", "category": "Backend" },
+    { "name": "Tailwind CSS", "category": "Frontend" },
+    { "name": "MongoDB", "category": "Database" }
+  ],
+  "features": [
+    {
+      "title": "Dynamic Package Configurator",
+      "description": "Multi-step vehicle size and treatment selector (Ceramic, PPF, Interior Restoration) that computes pricing and estimated duration instantly.",
+      "icon": "Sliders"
+    },
+    {
+      "title": "Interactive Before/After Slider",
+      "description": "High-contrast split image comparison component showcasing paint correction on swirl-marked clear coats.",
+      "icon": "Eye"
+    },
+    {
+      "title": "Slot Booking Calendar",
+      "description": "API syncs available studio bays, blocks conflicting dates, and provides instant booking holds.",
+      "icon": "Calendar"
+    },
+    {
+      "title": "Vehicle Service Catalog",
+      "description": "Comprehensive guides on ceramic curing, clear bra maintenance, and multi-stage paint rejuvenation.",
+      "icon": "Layers"
+    }
+  ],
+  "contributions": [
+    "Engineered the full frontend experience with modern metallic dark styling, smooth hover states, and micro-interactions.",
+    "Developed backend RESTful endpoints for appointment slots, custom quote requests, and customer inquiries.",
+    "Integrated vehicle profiles and package configurations for seamless mobile selection.",
+    "Optimized media delivery and assets for lightning-fast mobile loading and 60 FPS transitions."
+  ],
+  "challenges": [
+    {
+      "title": "Preventing Concurrent Slot Overlap",
+      "challenge": "Multiple simultaneous users attempting to reserve the same detailing bay created race conditions in booking submissions.",
+      "solution": "Implemented atomic reservation checks with temporary holds that lock the bay while the customer completes details."
+    },
+    {
+      "title": "Maintaining 60 FPS Scroll with Dark Glassmorphism",
+      "challenge": "Multiple blurred glassmorphism cards and large automotive visuals caused frame drops on mid-range devices.",
+      "solution": "Applied CSS containment (`contain: paint`), reduced backdrop blur radiuses, and lazy-loaded offscreen media."
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="purpleBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0a17"/>
+      <stop offset="50%" stop-color="#141029"/>
+      <stop offset="100%" stop-color="#090614"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+    <filter id="pGlow">
+      <feGaussianBlur stdDeviation="30" result="b"/>
+      <feComposite in="SourceGraphic" in2="b" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#purpleBg)"/>
+
+  <!-- Ambient lights -->
+  <circle cx="1000" cy="150" r="180" fill="#a855f7" opacity="0.15" filter="url(#pGlow)"/>
+  <circle cx="200" cy="500" r="180" fill="#ec4899" opacity="0.12" filter="url(#pGlow)"/>
+
+  <!-- Main Container -->
+  <rect x="80" y="60" width="1040" height="555" rx="16" fill="#120e24" stroke="#a855f7" stroke-opacity="0.3" stroke-width="1.5"/>
+
+  <!-- Top bar -->
+  <rect x="80" y="60" width="1040" height="48" rx="16" fill="#1b1436"/>
+  <circle cx="112" cy="84" r="6" fill="#ef4444"/>
+  <circle cx="132" cy="84" r="6" fill="#f59e0b"/>
+  <circle cx="152" cy="84" r="6" fill="#10b981"/>
+  <text x="180" y="89" fill="#e2e8f0" font-family="system-ui" font-size="13" font-weight="600">Tech Inject Design Library — Interactive UI Primitives &amp; Tokens</text>
+  <rect x="940" y="72" width="160" height="24" rx="12" fill="#2d1f4e"/>
+  <text x="960" y="88" fill="#c084fc" font-family="system-ui" font-size="11" font-weight="700">LIVE ON VERCEL</text>
+
+  <!-- Left: Component Catalog preview -->
+  <g transform="translate(110, 130)">
+    <rect x="0" y="0" width="460" height="300" rx="10" fill="#090614" stroke="#3b2b68" stroke-width="1.2"/>
+    <rect x="0" y="0" width="460" height="32" rx="10" fill="#170f30"/>
+    <circle cx="20" cy="16" r="4" fill="#ef4444"/>
+    <circle cx="34" cy="16" r="4" fill="#f59e0b"/>
+    <circle cx="48" cy="16" r="4" fill="#10b981"/>
+    <text x="70" y="20" fill="#a78bfa" font-family="monospace" font-size="11">bash ~ user@dev-workstation</text>
+
+    <text x="20" y="65" fill="#a855f7" font-family="monospace" font-size="12">$ npx tech-inject add bento-card dialog-pro</text>
+    <text x="20" y="95" fill="#e2e8f0" font-family="monospace" font-size="11">✔ Project detected: Next.js (App Router, Tailwind CSS)</text>
+    <text x="20" y="120" fill="#10b981" font-family="monospace" font-size="11">✔ Resolved path alias: @/components/ui</text>
+    <text x="20" y="145" fill="#c084fc" font-family="monospace" font-size="11">Dependencies installed: framer-motion clsx tailwind-merge</text>
+    <text x="20" y="175" fill="#e2e8f0" font-family="monospace" font-size="11">Created components/ui/bento-card.tsx</text>
+    <text x="20" y="200" fill="#e2e8f0" font-family="monospace" font-size="11">Created components/ui/dialog-pro.tsx</text>
+    <text x="20" y="235" fill="#38bdf8" font-family="monospace" font-size="11">Success! Component files injected directly into source.</text>
+    <text x="20" y="265" fill="#ec4899" font-family="monospace" font-size="12">$ <tspan fill="#ffffff">Ready to customize without package bloat.</tspan></text>
+  </g>
+
+  <!-- Right: Live Component Preview -->
+  <g transform="translate(595, 130)">
+    <rect x="0" y="0" width="495" height="300" rx="10" fill="#17122e" stroke="#4c3280" stroke-width="1.2"/>
+    <rect x="0" y="0" width="495" height="36" rx="10" fill="#20173e"/>
+    <text x="20" y="23" fill="#e2e8f0" font-family="system-ui" font-size="12" font-weight="600">Preview: BentoGrid &amp; NeonCard</text>
+    <rect x="410" y="8" width="70" height="20" rx="4" fill="#a855f7" fill-opacity="0.3"/>
+    <text x="424" y="22" fill="#c084fc" font-family="system-ui" font-size="10" font-weight="700">REACT 19</text>
+
+    <!-- Mini Bento Grid -->
+    <g transform="translate(20, 55)">
+      <rect x="0" y="0" width="215" height="105" rx="8" fill="#120c24" stroke="#ec4899" stroke-width="1.2"/>
+      <text x="15" y="28" fill="#f472b6" font-family="system-ui" font-size="11" font-weight="700">Spring Physics</text>
+      <text x="15" y="50" fill="#94a3b8" font-family="system-ui" font-size="10">Fluid layoutId morphing</text>
+      <rect x="15" y="65" width="75" height="22" rx="4" fill="url(#purpleGrad)"/>
+      <text x="26" y="79" fill="#ffffff" font-family="system-ui" font-size="9" font-weight="700">Preview</text>
+
+      <rect x="235" y="0" width="220" height="105" rx="8" fill="#120c24" stroke="#818cf8" stroke-width="1.2"/>
+      <text x="250" y="28" fill="#818cf8" font-family="system-ui" font-size="11" font-weight="700">Zero Runtime Lock-In</text>
+      <text x="250" y="50" fill="#94a3b8" font-family="system-ui" font-size="10">100% code ownership</text>
+      <circle cx="260" cy="76" r="10" fill="#4f46e5"/>
+      <circle cx="288" cy="76" r="10" fill="#ec4899"/>
+      <circle cx="316" cy="76" r="10" fill="#10b981"/>
+
+      <rect x="0" y="120" width="455" height="100" rx="8" fill="#120c24" stroke="#a855f7" stroke-width="1.2"/>
+      <text x="20" y="148" fill="#e2e8f0" font-family="system-ui" font-size="12" font-weight="700">Command Palette &amp; Keyboard Nav (⌘K)</text>
+      <rect x="20" y="165" width="415" height="35" rx="6" fill="#1e153b" stroke="#3b2b68" stroke-width="1"/>
+      <text x="35" y="187" fill="#c084fc" font-family="system-ui" font-size="11">Type a command or search components...</text>
+      <rect x="385" y="172" width="35" height="20" rx="4" fill="#2d1f4e"/>
+      <text x="393" y="186" fill="#e2e8f0" font-family="system-ui" font-size="10">ESC</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Metric Bar -->
+  <g transform="translate(110, 455)">
+    <rect x="0" y="0" width="980" height="135" rx="10" fill="#17122e" stroke="#3b2b68" stroke-width="1"/>
+    <g transform="translate(40, 30)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">35+</text>
+      <text x="0" y="55" fill="#a78bfa" font-family="system-ui" font-size="12" font-weight="600">Accessible Primitives</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">WAI-ARIA compliant</text>
+    </g>
+    <g transform="translate(280, 30)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">0kb</text>
+      <text x="0" y="55" fill="#a78bfa" font-family="system-ui" font-size="12" font-weight="600">Runtime Overhead</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Direct source code copy</text>
+    </g>
+    <g transform="translate(520, 30)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">100%</text>
+      <text x="0" y="55" fill="#a78bfa" font-family="system-ui" font-size="12" font-weight="600">TypeScript Typed</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Strict prop schemas</text>
+    </g>
+    <g transform="translate(760, 30)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">60 FPS</text>
+      <text x="0" y="55" fill="#a78bfa" font-family="system-ui" font-size="12" font-weight="600">Hardware Accelerated</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">GPU spring transforms</text>
+    </g>
+  </g>
+</svg>

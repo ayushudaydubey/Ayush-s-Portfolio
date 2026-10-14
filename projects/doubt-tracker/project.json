@@ -1,0 +1,86 @@
+{
+  "slug": "doubt-tracker",
+  "title": "Doubt Tracker",
+  "category": "Full Stack Collaborative Learning Tool",
+  "order": 3,
+  "shortDescription": "A dedicated academic and developer issue tracker designed to organize, prioritize, resolve, and categorize technical questions and student doubts.",
+  "overview": "Doubt Tracker is an intuitive collaborative web application built with React, Node.js, Express, and MongoDB. It gives developers and students an organized dashboard to log complex doubts, attach code snippets and tags, track resolution statuses (Open, In Progress, Resolved), and collaborate on clear solutions.",
+  "problem": "Technical questions and bugs get lost in disorganized chat channels and messaging threads, leading to repeated questions, lost context, and delayed resolutions.",
+  "solution": "Developed a centralized doubt management platform with faceted status filters, markdown code support, solution verification markers, and topic-based categorization.",
+  "role": "Full Stack Developer",
+  "timeline": "2 Months",
+  "featured": true,
+  "liveUrl": "https://doubt-tracker-frontend.vercel.app/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "Main doubt tracker dashboard displaying open issues, category tags, and resolution filters.",
+      "alt": "Doubt Tracker main dashboard interface"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Detailed doubt thread with syntax-highlighted code snippet and verified solution answer.",
+      "alt": "Doubt Tracker question detail view"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "New doubt submission form with real-time markdown preview and tag selector.",
+      "alt": "Doubt Tracker new issue submission form"
+    }
+  ],
+  "metrics": [
+    { "label": "Organization", "value": "3-tier status workflow" },
+    { "label": "Formatting", "value": "Markdown & Code blocks" },
+    { "label": "Filtering", "value": "Instant multi-tag search" },
+    { "label": "Resolution", "value": "Verified solution markers" }
+  ],
+  "technologies": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "Express", "category": "Backend" },
+    { "name": "MongoDB", "category": "Database" },
+    { "name": "Tailwind CSS", "category": "Frontend" }
+  ],
+  "features": [
+    {
+      "title": "Structured Resolution Workflow",
+      "description": "Track doubt lifecycle from Open to In Review and Marked as Resolved with clear progress indicators.",
+      "icon": "CheckCircle2"
+    },
+    {
+      "title": "Markdown & Code Snippet Support",
+      "description": "Embed formatted syntax-highlighted code blocks, terminal logs, and error stack traces directly in posts.",
+      "icon": "Code"
+    },
+    {
+      "title": "Topic & Technology Tagging",
+      "description": "Categorize questions by language, framework, module, or urgency for targeted resolution queues.",
+      "icon": "Filter"
+    },
+    {
+      "title": "Verified Solution Pinning",
+      "description": "Highlight and pin accepted answers at the top of the thread for future reference by other learners.",
+      "icon": "Sparkles"
+    }
+  ],
+  "contributions": [
+    "Designed and implemented the full frontend dashboard with status badges, search bars, and filter pills.",
+    "Engineered the RESTful backend endpoints in Express for CRUD operations on doubt threads and comments.",
+    "Constructed MongoDB indexing on tags, creation timestamps, and resolution flags for sub-30ms query latency.",
+    "Integrated markdown parsing with sanitized HTML output to prevent cross-site scripting vulnerabilities."
+  ],
+  "challenges": [
+    {
+      "title": "Efficient Tag-Based Querying Across Large Datasets",
+      "challenge": "Filtering doubts by multiple intersecting tags and statuses caused sluggish response times in MongoDB.",
+      "solution": "Created compound multi-key indexes on `{ tags: 1, status: 1, createdAt: -1 }` in Mongoose, ensuring queries leverage fast B-tree index scans."
+    },
+    {
+      "title": "Sanitizing User Code Submissions",
+      "challenge": "User-submitted code blocks could contain malicious script tags when rendered in the question body.",
+      "solution": "Implemented DOMPurify sanitization before rendering markdown ASTs, safely escaping all dangerous attributes while preserving code syntax styling."
+    }
+  ]
+}

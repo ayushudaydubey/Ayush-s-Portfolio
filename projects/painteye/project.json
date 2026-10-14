@@ -1,0 +1,86 @@
+{
+  "slug": "painteye",
+  "title": "PaintEye",
+  "category": "Full Stack Next.js & Visual Intelligence",
+  "order": 6,
+  "shortDescription": "A modern color analytics and architectural paint visualizer powered by Next.js App Router, Prisma ORM, and PostgreSQL with RGB/HEX spectral mapping.",
+  "overview": "PaintEye is an advanced web application designed for interior designers, architects, and paint specialists. It delivers instant color palette extraction from user-uploaded room photos, simulates realistic ambient lighting transformations, and provides real-time catalog search backed by Prisma ORM and PostgreSQL with indexed CIE-Lab color distance matching.",
+  "problem": "Selecting paint colors from digital screens often fails in practice because standard RGB displays ignore ambient lighting shifts, surface undertones, and paint finish reflectance, leading to costly repainting projects.",
+  "solution": "Engineered an intelligent Next.js platform that analyzes uploaded room imagery, extracts dominant chromatic clusters using color quantization, matches them against manufacturer catalog databases, and simulates lighting temperature variations.",
+  "role": "Full Stack Developer",
+  "timeline": "3 Months",
+  "featured": true,
+  "liveUrl": "https://painteye.com/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "Room visualizer showing wall color swap with Kelvin ambient lighting temperature slider.",
+      "alt": "PaintEye room visualizer interface with color palette preview"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Color extraction studio breaking down photograph into dominant swatches and Prisma-backed matches.",
+      "alt": "PaintEye color palette extraction and swatch breakdown"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "Architectural spec board generating downloadable swatch catalog with HEX, RGB, and brand SKU data.",
+      "alt": "PaintEye moodboard and spec sheet generator"
+    }
+  ],
+  "metrics": [
+    { "label": "Accuracy", "value": "Delta-E < 2.0" },
+    { "label": "Search Latency", "value": "< 45ms query response" },
+    { "label": "Catalog Size", "value": "15,000+ paint formulations" },
+    { "label": "Rendering", "value": "Instant client lighting" }
+  ],
+  "technologies": [
+    { "name": "Next.js", "category": "Frontend" },
+    { "name": "TypeScript", "category": "Frontend" },
+    { "name": "Prisma ORM", "category": "Backend" },
+    { "name": "PostgreSQL", "category": "Database" },
+    { "name": "Tailwind CSS", "category": "Frontend" }
+  ],
+  "features": [
+    {
+      "title": "Intelligent Palette Extraction",
+      "description": "Runs in-browser image quantization to isolate primary, secondary, and accent colors without server load.",
+      "icon": "Droplets"
+    },
+    {
+      "title": "Relational Color Distance Engine",
+      "description": "Custom PostgreSQL queries with CIE-Lab mathematical distance calculations to find nearest commercial manufacturer paint matches.",
+      "icon": "Search"
+    },
+    {
+      "title": "Ambient Light Simulation",
+      "description": "Interactive slider simulating Kelvin temperatures from 2700K (warm dawn) to 6500K (cool daylight) on room surfaces.",
+      "icon": "Sun"
+    },
+    {
+      "title": "Project Moodboard Exporter",
+      "description": "Generates exportable client spec sheets containing paint codes, finish recommendations, and complementary trim palettes.",
+      "icon": "FileDown"
+    }
+  ],
+  "contributions": [
+    "Designed the relational database schema in Prisma ORM with optimized indexes for RGB and CIE-Lab coordinate queries.",
+    "Built the full Next.js App Router application with responsive layouts, modal overlays, and server-side data fetching.",
+    "Developed a custom color segmentation algorithm that isolates room boundaries based on edge detection.",
+    "Implemented structured JSON REST endpoints for catalog filtering, brand comparisons, and user swatch collections."
+  ],
+  "challenges": [
+    {
+      "title": "Accurate Color Representation Across Lighting Shifts",
+      "challenge": "Translating sRGB values to perceived physical paint tones under varying color temperatures required mathematical corrections.",
+      "solution": "Integrated colorimetric conversion algorithms (sRGB → XYZ → CIE-L*a*b*) and applied Kelvin chromaticity matrices directly within canvas filters."
+    },
+    {
+      "title": "Database Query Speed for Nearest Neighbor Matching",
+      "challenge": "Calculating distance between a user's uploaded color and 15,000+ database records was causing high CPU usage.",
+      "solution": "Implemented cube-based 3D spatial indexing in PostgreSQL, narrowing candidate matches within a tight bounding cube before computing Euclidean distances."
+    }
+  ]
+}

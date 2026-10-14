@@ -1,0 +1,87 @@
+{
+  "slug": "prospect-data-engine",
+  "title": "Prospect Data Engine (PDE)",
+  "category": "High-Performance Data Pipeline & Backend",
+  "order": 7,
+  "shortDescription": "A high-throughput ETL engine processing large multi-gigabyte Excel datasets with worker threads, chunked streaming, configurable batching, and fault-tolerant checkpoint resume.",
+  "overview": "Prospect Data Engine is engineered to solve memory saturation and crash loops when parsing massive, heterogeneous Excel (.xlsx/.csv) files containing hundreds of thousands of lead prospects. Traditional single-threaded parsers choke or exceed Node.js heap limits. This engine distributes file parsing across Node.js worker thread pools, streams rows into validated batches, and provides real-time progress telemetry with persistent crash-recovery checkpoints.",
+  "problem": "Operations teams routinely deal with 500k+ row Excel workbooks that freeze standard spreadsheet tools and crash conventional web application upload endpoints due to synchronous in-memory parsing and V8 garbage collection spikes.",
+  "solution": "Architected a streaming ETL pipeline that splits incoming workbooks into byte chunks, distributes decompression across worker threads, validates records against configurable schemas, and persists state markers every 1,000 processed rows for instant resumption.",
+  "role": "Lead Backend Developer",
+  "timeline": "3 Months",
+  "featured": true,
+  "liveUrl": "https://pde.gnosysdigital.com/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "Telemetry dashboard showing worker threads streaming 120,000+ rows/min with live heap monitoring.",
+      "alt": "Prospect Data Engine real-time worker thread telemetry dashboard"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Checkpoint recovery ledger displaying atomic segment status and batch resume controls.",
+      "alt": "Prospect Data Engine checkpoint recovery ledger UI"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "Dynamic schema configuration mapping Excel headers to relational database targets with validation rules.",
+      "alt": "Prospect Data Engine schema validator and mapping tool"
+    }
+  ],
+  "metrics": [
+    { "label": "Throughput", "value": "25,000+ rows/sec" },
+    { "label": "Memory Heap", "value": "< 180MB stable heap" },
+    { "label": "Recovery", "value": "Instant checkpoint resume" },
+    { "label": "Dataset Handling", "value": "Up to 5M rows tested" }
+  ],
+  "technologies": [
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "Worker Threads", "category": "Backend" },
+    { "name": "TypeScript", "category": "Frontend" },
+    { "name": "Streams API", "category": "Backend" },
+    { "name": "Redis", "category": "Database" },
+    { "name": "PostgreSQL", "category": "Database" }
+  ],
+  "features": [
+    {
+      "title": "Multi-Threaded Parallel Ingestion",
+      "description": "Offloads CPU-heavy parsing and unzipping of XLSX binaries to worker thread pools, keeping the main event loop completely unblocked.",
+      "icon": "Cpu"
+    },
+    {
+      "title": "Streaming Batch Processing",
+      "description": "Buffers incoming records into tuneable batch windows with backpressure controls to prevent database connection exhaustion.",
+      "icon": "Layers"
+    },
+    {
+      "title": "Checkpoint-Based State Recovery",
+      "description": "Persists atomic ledger markers per chunk; if network or process drops occur, parsing resumes from the exact last verified line.",
+      "icon": "RotateCcw"
+    },
+    {
+      "title": "Dynamic Schema Validation",
+      "description": "Dynamic field mapping, regex sanitization, and automated anomaly isolation that exports corrupt rows into dedicated audit logs.",
+      "icon": "CheckCircle2"
+    }
+  ],
+  "contributions": [
+    "Engineered the multi-threaded orchestration layer utilizing Node.js `worker_threads` and shared memory buffers.",
+    "Implemented a custom stream transformer with backpressure signaling that reduced memory spikes from 2.4 GB to under 180 MB.",
+    "Designed the idempotent checkpoint recovery protocol with transactional state tracking in Redis and PostgreSQL.",
+    "Built an intuitive dashboard for operators to monitor job queues, view health metrics, and trigger re-runs."
+  ],
+  "challenges": [
+    {
+      "title": "V8 Heap Exceeded on Monolithic XLSX Files",
+      "challenge": "Parsing full XML DOM trees inside .xlsx zip packages exhausted the default Node.js memory limit on files over 150MB.",
+      "solution": "Switched to an event-driven SAX parser combined with Node.js Readable streams, processing raw sheet XML nodes sequentially without constructing the full document tree in memory."
+    },
+    {
+      "title": "Database Lock Contention During Bulk Upserts",
+      "challenge": "Worker threads executing uncoordinated bulk inserts caused deadlocks and row-lock contention on customer tables.",
+      "solution": "Implemented a publisher-consumer queue with Redis Streams that aggregates validated records into sorted micro-batches with staging table bulk COPY commands."
+    }
+  ]
+}

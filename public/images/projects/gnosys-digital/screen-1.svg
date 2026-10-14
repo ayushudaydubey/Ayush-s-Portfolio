@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pk1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140810"/>
+      <stop offset="100%" stop-color="#0a0408"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#pk1)"/>
+  <rect x="40" y="40" width="920" height="520" rx="12" fill="#180a14" stroke="#ec4899" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="40" width="920" height="42" rx="12" fill="#240f1f"/>
+  <circle cx="65" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="82" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="99" cy="61" r="5" fill="#10b981"/>
+  <text x="125" y="66" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Kinetic Typography Hero &amp; Brand Interaction</text>
+
+  <g transform="translate(70, 110)">
+    <rect x="0" y="0" width="860" height="420" rx="8" fill="#120710" stroke="#3d152b" stroke-width="1"/>
+    
+    <g transform="translate(40, 50)">
+      <text x="0" y="40" fill="#f43f5e" font-family="system-ui" font-size="14" font-weight="700">EXPERIENCE DESIGN STUDIO</text>
+      <text x="0" y="95" fill="#f8fafc" font-family="system-ui" font-size="44" font-weight="900">RADICAL SPEED.</text>
+      <text x="0" y="150" fill="#ec4899" font-family="system-ui" font-size="44" font-weight="900">UNMATCHED FINISH.</text>
+      <text x="0" y="200" fill="#94a3b8" font-family="system-ui" font-size="14">We design and construct high-performance digital flagships that convert prospects into passionate advocates.</text>
+
+      <!-- Proof points -->
+      <g transform="translate(0, 240)">
+        <rect x="0" y="0" width="220" height="60" rx="6" fill="#240f1f" stroke="#ec4899" stroke-width="1"/>
+        <text x="20" y="30" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="800">40+ Awards</text>
+        <text x="20" y="48" fill="#ec4899" font-family="system-ui" font-size="11">Awwwards &amp; FWA Site of the Day</text>
+
+        <rect x="250" y="0" width="220" height="60" rx="6" fill="#240f1f" stroke="#a855f7" stroke-width="1"/>
+        <text x="270" y="30" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="800">&lt; 500ms</text>
+        <text x="270" y="48" fill="#c084fc" font-family="system-ui" font-size="11">Global edge delivery with Next.js</text>
+      </g>
+    </g>
+  </g>
+</svg>

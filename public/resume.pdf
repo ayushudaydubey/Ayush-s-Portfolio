@@ -1,0 +1,67 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 500 >>
+stream
+BT
+/F1 22 Tf
+50 720 Td
+(Ayush Dubey - Full Stack / MERN Stack Developer) Tj
+/F1 12 Tf
+0 -30 Td
+(Email: ayushdubey.dev@gmail.com | GitHub: github.com/ayushdubey-dev) Tj
+0 -20 Td
+(Portfolio: Modern Full Stack Web Applications & Scalable Distributed Systems) Tj
+/F1 14 Tf
+0 -40 Td
+(CORE EXPERTISE) Tj
+/F1 11 Tf
+0 -20 Td
+(Next.js App Router, React 19, TypeScript, Node.js, Express, Tailwind CSS, Framer Motion) Tj
+0 -15 Td
+(PostgreSQL, MongoDB, Prisma ORM, Redis, Worker Threads, Docker, RESTful APIs) Tj
+/F1 14 Tf
+0 -35 Td
+(KEY PROJECTS) Tj
+/F1 11 Tf
+0 -20 Td
+(1. Prospect Data Engine - High-throughput multi-threaded Excel ETL pipeline) Tj
+0 -15 Td
+(2. Tech Inject UI Library - 35+ accessible React components and terminal CLI) Tj
+0 -15 Td
+(3. PaintEye - Full stack Next.js & Prisma color analytics with CIE-Lab spatial indexing) Tj
+0 -15 Td
+(4. Exotic Car Detailing Studio - Luxury automotive booking with Node.js/Express backend) Tj
+0 -15 Td
+(5. Gnosys Digital - Creative agency showcase with kinetic typography and 100/100 Core Web Vitals) Tj
+0 -15 Td
+(6. Quickzy - Full stack MERN e-commerce platform with optimistic cart and atomic inventory) Tj
+0 -15 Td
+(7. Lilly AI Chatbot - Real-time SSE token streaming assistant with markdown code syntax parser) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000010 00000 n 
+0000000060 00000 n 
+0000000117 00000 n 
+0000000237 00000 n 
+0000000788 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+861
+%%EOF

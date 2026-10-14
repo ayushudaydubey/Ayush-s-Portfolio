@@ -1,0 +1,87 @@
+{
+  "slug": "chatzone",
+  "title": "ChatZone",
+  "category": "Full Stack Real-Time Communication",
+  "order": 1,
+  "shortDescription": "A fast, responsive real-time messaging platform featuring instant WebSocket communications, secure authentication, active presence tracking, and dynamic chat rooms.",
+  "overview": "ChatZone is a modern full-stack web chat application built to enable zero-latency conversations. Engineered with React, Node.js, Express, and Socket.io, ChatZone provides authenticated user rooms, persistent message histories, instant typing indicators, online status heartbeats, and a sleek dark cyber interface.",
+  "problem": "Traditional HTTP polling in chat applications creates unnecessary server load, introduces message delivery delays, and fails to deliver the snappy responsiveness expected in modern collaborative tools.",
+  "solution": "Architected a bi-directional WebSocket communication pipeline with Socket.io that broadcasts messages instantly, syncs room participant lists in real time, and buffers messages locally for optimistic client-side UI updates.",
+  "role": "Full Stack Developer",
+  "timeline": "2 Months",
+  "featured": true,
+  "liveUrl": "https://chatzone-frontend.vercel.app/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "ChatZone active conversation view with real-time room channels and online participant roster.",
+      "alt": "ChatZone active conversation interface"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Channel management modal and direct message search interface.",
+      "alt": "ChatZone channel selector and search"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "User profile preferences and notification presence settings.",
+      "alt": "ChatZone user presence settings"
+    }
+  ],
+  "metrics": [
+    { "label": "Latency", "value": "< 25ms WebSocket sync" },
+    { "label": "Delivery", "value": "Instant real-time dispatch" },
+    { "label": "Security", "value": "JWT Auth & Session Guard" },
+    { "label": "Architecture", "value": "MERN + Socket.io" }
+  ],
+  "technologies": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "Express", "category": "Backend" },
+    { "name": "Socket.io", "category": "Backend" },
+    { "name": "MongoDB", "category": "Database" },
+    { "name": "Tailwind CSS", "category": "Frontend" }
+  ],
+  "features": [
+    {
+      "title": "Bi-Directional Real-Time Messaging",
+      "description": "Instantaneous text broadcasting with Socket.io event listeners, acknowledgments, and connection fallback.",
+      "icon": "Zap"
+    },
+    {
+      "title": "Active Presence & Typing Indicators",
+      "description": "Real-time online status heartbeats and debounced typing status notifications across active channels.",
+      "icon": "Activity"
+    },
+    {
+      "title": "Channel & Direct Messaging",
+      "description": "Create custom group channels or initiate encrypted direct chats with searchable message histories.",
+      "icon": "Layers"
+    },
+    {
+      "title": "Optimistic Message Delivery",
+      "description": "Immediate client-side bubble rendering with background delivery confirmation and retry handling.",
+      "icon": "CheckCircle2"
+    }
+  ],
+  "contributions": [
+    "Designed and coded the full frontend user interface with responsive dark mode and custom scrollable chat panes.",
+    "Implemented the Socket.io event loop handling user joins, leaves, message dispatches, and disconnect heartbeats.",
+    "Structured MongoDB schemas for chat threads, participants, and unread message counters.",
+    "Configured secure JWT token exchange on initial WebSocket handshake to prevent unauthorized room connections."
+  ],
+  "challenges": [
+    {
+      "title": "Handling Network Flapping and Stale Connections",
+      "challenge": "Intermittent mobile network drops left ghost users displayed in room member lists without real-time updates.",
+      "solution": "Implemented a ping-pong heartbeat timeout mechanism in Socket.io that flags unresponsive sockets after 15 seconds and broadcasts user disconnect events gracefully."
+    },
+    {
+      "title": "Preserving Scroll Position During Chat History Pagination",
+      "challenge": "Prepending older historical messages to the top of the chat window caused jarring scroll jumps for the user.",
+      "solution": "Calculated pre-fetch DOM scroll height offsets before prepending older messages, restoring the scroll viewport smoothly."
+    }
+  ]
+}

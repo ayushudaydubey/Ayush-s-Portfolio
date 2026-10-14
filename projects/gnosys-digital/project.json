@@ -1,0 +1,85 @@
+{
+  "slug": "gnosys-digital",
+  "title": "Gnosys Digital Portfolio",
+  "category": "Agency Portfolio & Modern Interactive Web",
+  "order": 4,
+  "shortDescription": "A creative digital agency website featuring fluid typography, magnetic navigation, responsive layouts, dynamic case study showcases, and modular UI components.",
+  "overview": "Gnosys Digital Portfolio is a cutting-edge corporate website developed for an elite digital product studio. Built with Next.js, TypeScript, and modern CSS animations, it emphasizes bold typographic hierarchy, dark-mode luxury, smooth scroll interactions, and conversion-optimized service landing pages.",
+  "problem": "The agency needed to stand out against cookie-cutter agency templates with a distinctive brand presence that directly demonstrated their digital craft, speed, and creative capabilities to enterprise prospects.",
+  "solution": "Constructed a high-performance web experience featuring kinetic typography, custom cursor interactions, modular case-study layouts, and an interactive contact inquiry funnel.",
+  "role": "Lead Frontend Developer",
+  "timeline": "2 Months",
+  "featured": false,
+  "liveUrl": "https://portfolio.gnosysdigital.com/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "Agency landing hero featuring kinetic typography, dark aesthetic, and client proof bar.",
+      "alt": "Gnosys Digital agency hero section with modern dark typography"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Interactive service capabilities matrix with hover reveals and animated badges.",
+      "alt": "Gnosys Digital service capabilities matrix and UI cards"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "Case study layout featuring client deliverables, KPIs, and technology badges.",
+      "alt": "Gnosys Digital case study layout and project results"
+    }
+  ],
+  "metrics": [
+    { "label": "Core Web Vitals", "value": "All Green / 100 on Desktop" },
+    { "label": "Average Session", "value": "3m 42s engagement" },
+    { "label": "Bounce Rate", "value": "-22% vs previous site" },
+    { "label": "Inquiry Lift", "value": "+45% lead submissions" }
+  ],
+  "technologies": [
+    { "name": "Next.js", "category": "Frontend" },
+    { "name": "TypeScript", "category": "Frontend" },
+    { "name": "Tailwind CSS", "category": "Frontend" },
+    { "name": "Framer Motion", "category": "Frontend" }
+  ],
+  "features": [
+    {
+      "title": "Kinetic Scroll & Parallax Elements",
+      "description": "Smooth scroll animations that dynamically reveal case study graphics and statistical highlights as users scroll.",
+      "icon": "MousePointer"
+    },
+    {
+      "title": "Modular Service Showcase",
+      "description": "Interactive accordion grid showcasing brand strategy, full-stack web engineering, and product design capabilities.",
+      "icon": "Grid"
+    },
+    {
+      "title": "Client Case Study Walkthroughs",
+      "description": "Rich visual editorial layouts highlighting client problem statements, metrics, and technology architectures.",
+      "icon": "FileText"
+    },
+    {
+      "title": "Interactive Project Estimator",
+      "description": "Funnel form allowing potential clients to choose project scope, timeline, and budget for instant scoping.",
+      "icon": "Send"
+    }
+  ],
+  "contributions": [
+    "Engineered all responsive page templates from Figma designs with pixel-perfect precision.",
+    "Implemented smooth navigation transitions and responsive mobile drawer menu with tactile micro-interactions.",
+    "Structured SEO metadata, Open Graph cards, and structured JSON-LD schemas for agency search discoverability.",
+    "Optimized web fonts and asset pipelines to achieve zero layout shift (CLS: 0.00)."
+  ],
+  "challenges": [
+    {
+      "title": "Dynamic Parallax Without Performance Degradation",
+      "challenge": "Heavy JavaScript scroll listeners triggered frequent re-renders and caused jank on touch devices.",
+      "solution": "Replaced manual scroll listeners with native CSS `transform` bound to CSS custom properties and CSS scroll-driven animations with Framer Motion `useScroll` transforms."
+    },
+    {
+      "title": "Cross-Device Typography Scaling",
+      "challenge": "Display typography needed to look massive on ultra-wide monitors without wrapping awkwardly on mobile displays.",
+      "solution": "Leveraged CSS `clamp()` fluid sizing functions (`clamp(2.5rem, 5vw + 1rem, 6rem)`) to create continuous, fluid typography without jarring breakpoint jumps."
+    }
+  ]
+}

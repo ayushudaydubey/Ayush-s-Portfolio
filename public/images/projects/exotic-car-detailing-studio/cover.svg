@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="goldBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120c06"/>
+      <stop offset="50%" stop-color="#1c140a"/>
+      <stop offset="100%" stop-color="#0a0703"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#e11d48"/>
+    </linearGradient>
+    <filter id="goldGlow">
+      <feGaussianBlur stdDeviation="30" result="gg"/>
+      <feComposite in="SourceGraphic" in2="gg" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#goldBg)"/>
+  <circle cx="980" cy="160" r="180" fill="#f59e0b" opacity="0.14" filter="url(#goldGlow)"/>
+  <circle cx="200" cy="520" r="180" fill="#ea580c" opacity="0.12" filter="url(#goldGlow)"/>
+
+  <rect x="80" y="60" width="1040" height="555" rx="16" fill="#140e07" stroke="#f59e0b" stroke-opacity="0.35" stroke-width="1.5"/>
+
+  <!-- Top bar -->
+  <rect x="80" y="60" width="1040" height="48" rx="16" fill="#22170d"/>
+  <circle cx="112" cy="84" r="6" fill="#ef4444"/>
+  <circle cx="132" cy="84" r="6" fill="#f59e0b"/>
+  <circle cx="152" cy="84" r="6" fill="#10b981"/>
+  <text x="180" y="89" fill="#e2e8f0" font-family="system-ui" font-size="13" font-weight="600">Exotic Car Detailing Studio — Luxury Vehicle Treatment Configurator &amp; Booking Engine</text>
+  <rect x="940" y="72" width="160" height="24" rx="12" fill="#362211"/>
+  <text x="965" y="88" fill="#f59e0b" font-family="system-ui" font-size="11" font-weight="700">NODE.JS + MONGODB</text>
+
+  <!-- Left: Exotic Supercar Silhouette & Package Configurator -->
+  <g transform="translate(110, 130)">
+    <rect x="0" y="0" width="550" height="310" rx="10" fill="#120c06" stroke="#3d2614" stroke-width="1.2"/>
+    <rect x="0" y="0" width="550" height="36" rx="10" fill="#1f140b"/>
+    <text x="20" y="23" fill="#e2e8f0" font-family="system-ui" font-size="12" font-weight="600">Bespoke Treatment Builder: Coupe / Exotic Class</text>
+
+    <!-- Supercar wireframe/silhouette -->
+    <path d="M 40,160 Q 90,130 170,110 Q 250,90 320,95 Q 400,100 460,130 Q 510,145 520,170 L 490,175 Q 480,150 450,150 Q 420,150 410,175 L 170,175 Q 160,150 130,150 Q 100,150 90,175 Z" fill="none" stroke="url(#goldGrad)" stroke-width="3"/>
+    <circle cx="130" cy="175" r="22" fill="#24170e" stroke="#f59e0b" stroke-width="2"/>
+    <circle cx="450" cy="175" r="22" fill="#24170e" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Dynamic price tag -->
+    <rect x="360" y="50" width="170" height="42" rx="6" fill="#29180d" stroke="#f59e0b" stroke-width="1"/>
+    <text x="375" y="76" fill="#f59e0b" font-family="system-ui" font-size="18" font-weight="800">$2,450 <tspan fill="#a8a29e" font-size="11" font-weight="500">USD est.</tspan></text>
+
+    <!-- Treatment option pills -->
+    <g transform="translate(25, 220)">
+      <rect x="0" y="0" width="155" height="36" rx="6" fill="#29180d" stroke="#f59e0b" stroke-width="1"/>
+      <text x="14" y="22" fill="#fef08a" font-family="system-ui" font-size="10" font-weight="700">✔ 9H Ceramic Matrix (5yr)</text>
+
+      <rect x="170" y="0" width="155" height="36" rx="6" fill="#29180d" stroke="#f59e0b" stroke-width="1"/>
+      <text x="184" y="22" fill="#fef08a" font-family="system-ui" font-size="10" font-weight="700">✔ Full Front PPF Film</text>
+
+      <rect x="340" y="0" width="160" height="36" rx="6" fill="#1c1108" stroke="#3d2614" stroke-width="1"/>
+      <text x="354" y="22" fill="#a8a29e" font-family="system-ui" font-size="10">+ Alcantara Deep Steam</text>
+
+      <rect x="0" y="48" width="500" height="32" rx="6" fill="url(#goldGrad)"/>
+      <text x="175" y="69" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="700">Proceed to Bay Reservation →</text>
+    </g>
+  </g>
+
+  <!-- Right: Real-Time Bay Reservation Calendar -->
+  <g transform="translate(685, 130)">
+    <rect x="0" y="0" width="405" height="310" rx="10" fill="#120c06" stroke="#3d2614" stroke-width="1.2"/>
+    <rect x="0" y="0" width="405" height="36" rx="10" fill="#1f140b"/>
+    <text x="20" y="23" fill="#e2e8f0" font-family="system-ui" font-size="12" font-weight="600">Studio Bay Availability (Live Node.js API)</text>
+
+    <!-- Bay status cards -->
+    <g transform="translate(20, 55)">
+      <rect x="0" y="0" width="365" height="65" rx="6" fill="#1c1209" stroke="#f59e0b" stroke-width="1"/>
+      <text x="15" y="28" fill="#f8fafc" font-family="system-ui" font-size="12" font-weight="700">Bay 1 • Dust-Free Cleanroom</text>
+      <text x="15" y="48" fill="#10b981" font-family="system-ui" font-size="11">● Available Oct 16 - Oct 18 (Held for 9m 40s)</text>
+
+      <rect x="0" y="78" width="365" height="65" rx="6" fill="#140d06" stroke="#3d2614" stroke-width="1"/>
+      <text x="15" y="106" fill="#94a3b8" font-family="system-ui" font-size="12" font-weight="600">Bay 2 • Infrared Curing Chamber</text>
+      <text x="15" y="126" fill="#ef4444" font-family="system-ui" font-size="11">● Booked: Porsche 911 GT3 RS (Ceramic)</text>
+
+      <rect x="0" y="156" width="365" height="85" rx="6" fill="#0d0804"/>
+      <text x="15" y="182" fill="#f59e0b" font-family="system-ui" font-size="11" font-weight="700">EXPRESS BACKEND INTEGRATION</text>
+      <text x="15" y="204" fill="#94a3b8" font-family="monospace" font-size="10">POST /api/v1/bookings/hold-bay</text>
+      <text x="15" y="224" fill="#64748b" font-family="monospace" font-size="10">HTTP 200 OK • Bay reserved with atomic lock</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Metrics Bar -->
+  <g transform="translate(110, 465)">
+    <rect x="0" y="0" width="980" height="125" rx="10" fill="#170f07" stroke="#3d2614" stroke-width="1"/>
+    <g transform="translate(40, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">+38%</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">Inquiry Conversion</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Interactive estimate builder</text>
+    </g>
+    <g transform="translate(280, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">98/100</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">Lighthouse Mobile</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Zero layout shifts</text>
+    </g>
+    <g transform="translate(520, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">&lt; 0.8s</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">Initial Page Render</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Optimized assets &amp; caching</text>
+    </g>
+    <g transform="translate(760, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">0 Overlaps</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">Atomic Bay Locks</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Race-condition prevention</text>
+    </g>
+  </g>
+</svg>

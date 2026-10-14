@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dt3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120803"/>
+      <stop offset="100%" stop-color="#080402"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#dt3)"/>
+  <rect x="40" y="40" width="920" height="520" rx="12" fill="#140b04" stroke="#f59e0b" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="40" width="920" height="42" rx="12" fill="#241407"/>
+  <circle cx="65" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="82" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="99" cy="61" r="5" fill="#10b981"/>
+  <text x="125" y="66" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Doubt Tracker — Submission Form &amp; Tag Manager</text>
+
+  <g transform="translate(70, 110)">
+    <rect x="0" y="0" width="860" height="420" rx="8" fill="#100803" stroke="#3d210b" stroke-width="1"/>
+    <text x="30" y="38" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="700">Submit New Question or Bug Report</text>
+
+    <g transform="translate(30, 60)">
+      <text x="0" y="15" fill="#cbd5e1" font-family="system-ui" font-size="12">Title</text>
+      <rect x="0" y="25" width="800" height="40" rx="6" fill="#170c04" stroke="#3d210b" stroke-width="1"/>
+      <text x="15" y="50" fill="#f59e0b" font-family="system-ui" font-size="12">Describe the core issue in one concise sentence...</text>
+
+      <text x="0" y="95" fill="#cbd5e1" font-family="system-ui" font-size="12">Description &amp; Code Markdown</text>
+      <rect x="0" y="105" width="800" height="150" rx="6" fill="#170c04" stroke="#3d210b" stroke-width="1"/>
+      <text x="15" y="130" fill="#94a3b8" font-family="monospace" font-size="11">```typescript</text>
+      <text x="15" y="150" fill="#94a3b8" font-family="monospace" font-size="11">// Paste minimal reproducible code snippet here</text>
+      <text x="15" y="170" fill="#94a3b8" font-family="monospace" font-size="11">```</text>
+
+      <rect x="0" y="275" width="160" height="40" rx="8" fill="#f59e0b"/>
+      <text x="35" y="300" fill="#000000" font-family="system-ui" font-size="12" font-weight="700">Publish Doubt →</text>
+    </g>
+  </g>
+</svg>

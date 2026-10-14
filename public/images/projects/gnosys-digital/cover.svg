@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="pinkBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140810"/>
+      <stop offset="50%" stop-color="#1c0b17"/>
+      <stop offset="100%" stop-color="#0c050a"/>
+    </linearGradient>
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="50%" stop-color="#f43f5e"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+    <filter id="pinkGlow">
+      <feGaussianBlur stdDeviation="30" result="pg"/>
+      <feComposite in="SourceGraphic" in2="pg" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#pinkBg)"/>
+  <circle cx="1000" cy="150" r="180" fill="#ec4899" opacity="0.14" filter="url(#pinkGlow)"/>
+  <circle cx="200" cy="500" r="180" fill="#a855f7" opacity="0.12" filter="url(#pinkGlow)"/>
+
+  <rect x="80" y="60" width="1040" height="555" rx="16" fill="#170a13" stroke="#ec4899" stroke-opacity="0.35" stroke-width="1.5"/>
+
+  <!-- Top bar -->
+  <rect x="80" y="60" width="1040" height="48" rx="16" fill="#240f1f"/>
+  <circle cx="112" cy="84" r="6" fill="#ef4444"/>
+  <circle cx="132" cy="84" r="6" fill="#f59e0b"/>
+  <circle cx="152" cy="84" r="6" fill="#10b981"/>
+  <text x="180" y="89" fill="#e2e8f0" font-family="system-ui" font-size="13" font-weight="600">Gnosys Digital — Creative Studio Portfolio &amp; Kinetic Interactive Agency Experience</text>
+  <rect x="940" y="72" width="160" height="24" rx="12" fill="#3b1732"/>
+  <text x="965" y="88" fill="#f472b6" font-family="system-ui" font-size="11" font-weight="700">NEXT.JS + FRAMER</text>
+
+  <!-- Main Agency Canvas -->
+  <g transform="translate(110, 130)">
+    <rect x="0" y="0" width="980" height="310" rx="10" fill="#130810" stroke="#3d152b" stroke-width="1.2"/>
+    
+    <!-- Bold Typography & Hero -->
+    <g transform="translate(40, 50)">
+      <rect x="0" y="0" width="160" height="24" rx="12" fill="#311025"/>
+      <text x="12" y="16" fill="#ec4899" font-family="system-ui" font-size="10" font-weight="700">CREATIVE DIGITAL AGENCY</text>
+      
+      <text x="0" y="75" fill="#f8fafc" font-family="system-ui" font-size="38" font-weight="800">CRAFTING DIGITAL</text>
+      <text x="0" y="125" fill="url(#pinkGrad)" font-family="system-ui" font-size="38" font-weight="800">MASTERPIECES &amp; SPEED</text>
+      <text x="0" y="160" fill="#94a3b8" font-family="system-ui" font-size="13">High-touch web experiences, kinetic brand narratives, and conversion-focused architecture.</text>
+
+      <g transform="translate(0, 185)">
+        <rect x="0" y="0" width="160" height="40" rx="20" fill="url(#pinkGrad)"/>
+        <text x="35" y="25" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="700">View Selected Work</text>
+
+        <rect x="180" y="0" width="140" height="40" rx="20" fill="#240f1f" stroke="#ec4899" stroke-width="1"/>
+        <text x="215" y="25" fill="#f472b6" font-family="system-ui" font-size="12" font-weight="700">Estimate Scope</text>
+      </g>
+    </g>
+
+    <!-- Right: Animated Agency Cards -->
+    <g transform="translate(560, 30)">
+      <rect x="0" y="0" width="380" height="115" rx="8" fill="#1c0c17" stroke="#ec4899" stroke-width="1.2"/>
+      <text x="20" y="32" fill="#f472b6" font-family="system-ui" font-size="12" font-weight="700">Kinetic Parallax Engine</text>
+      <text x="20" y="55" fill="#94a3b8" font-family="system-ui" font-size="11">Framer Motion scroll triggers with zero layout shift</text>
+      <rect x="20" y="75" width="90" height="20" rx="4" fill="#311025"/>
+      <text x="32" y="89" fill="#ec4899" font-family="system-ui" font-size="9" font-weight="700">60 FPS SCROLL</text>
+
+      <rect x="0" y="130" width="380" height="115" rx="8" fill="#1c0c17" stroke="#a855f7" stroke-width="1.2"/>
+      <text x="20" y="162" fill="#c084fc" font-family="system-ui" font-size="12" font-weight="700">Fluid Typography Tokens</text>
+      <text x="20" y="185" fill="#94a3b8" font-family="system-ui" font-size="11">Continuous clamp() mathematical scaling across displays</text>
+      <rect x="20" y="205" width="90" height="20" rx="4" fill="#2b1130"/>
+      <text x="32" y="219" fill="#c084fc" font-family="system-ui" font-size="9" font-weight="700">RESPONSIVE</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Agency Metrics -->
+  <g transform="translate(110, 465)">
+    <rect x="0" y="0" width="980" height="125" rx="10" fill="#1a0c16" stroke="#3d152b" stroke-width="1"/>
+    <g transform="translate(40, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">100/100</text>
+      <text x="0" y="55" fill="#ec4899" font-family="system-ui" font-size="12" font-weight="600">Core Web Vitals</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Desktop performance score</text>
+    </g>
+    <g transform="translate(280, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">3m 42s</text>
+      <text x="0" y="55" fill="#ec4899" font-family="system-ui" font-size="12" font-weight="600">Avg User Session</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Deep visual engagement</text>
+    </g>
+    <g transform="translate(520, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">+45%</text>
+      <text x="0" y="55" fill="#ec4899" font-family="system-ui" font-size="12" font-weight="600">Inquiry Lift</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Streamlined lead funnel</text>
+    </g>
+    <g transform="translate(760, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">CLS: 0.00</text>
+      <text x="0" y="55" fill="#ec4899" font-family="system-ui" font-size="12" font-weight="600">Zero Cumulative Shift</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Stable font asset delivery</text>
+    </g>
+  </g>
+</svg>

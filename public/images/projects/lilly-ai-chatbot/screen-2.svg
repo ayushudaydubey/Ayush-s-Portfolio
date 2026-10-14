@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ai2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0719"/>
+      <stop offset="100%" stop-color="#05020a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#ai2)"/>
+  <rect x="40" y="40" width="920" height="520" rx="12" fill="#140824" stroke="#a855f7" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="40" width="920" height="42" rx="12" fill="#200d38"/>
+  <circle cx="65" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="82" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="99" cy="61" r="5" fill="#10b981"/>
+  <text x="125" y="66" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Personality &amp; System Prompt Customizer Modal</text>
+
+  <g transform="translate(70, 110)">
+    <rect x="0" y="0" width="860" height="420" rx="8" fill="#10061c" stroke="#351759" stroke-width="1"/>
+    <text x="30" y="38" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="800">Select AI Agent Persona &amp; Reasoning Mode</text>
+    
+    <!-- 4 Persona Cards Grid -->
+    <g transform="translate(30, 65)">
+      <!-- Persona 1 -->
+      <rect x="0" y="0" width="385" height="120" rx="8" fill="#200d38" stroke="#a855f7" stroke-width="1.5"/>
+      <text x="20" y="32" fill="#f472b6" font-family="system-ui" font-size="14" font-weight="700">⚡ Principal System Architect (Selected)</text>
+      <text x="20" y="55" fill="#cbd5e1" font-family="system-ui" font-size="11">Focuses on high-availability, caching tiers, worker threads, and event loops.</text>
+      <text x="20" y="85" fill="#a78bfa" font-family="monospace" font-size="10">Temp: 0.2 • Strict reasoning • Microservice patterns</text>
+
+      <!-- Persona 2 -->
+      <rect x="415" y="0" width="385" height="120" rx="8" fill="#150826" stroke="#351759" stroke-width="1"/>
+      <text x="435" y="32" fill="#f8fafc" font-family="system-ui" font-size="14" font-weight="700">💻 Full Stack Code Reviewer</text>
+      <text x="435" y="55" fill="#94a3b8" font-family="system-ui" font-size="11">Detects memory leaks, race conditions, type mismatches, and security flaws.</text>
+      <text x="435" y="85" fill="#64748b" font-family="monospace" font-size="10">Temp: 0.1 • Linting &amp; Sonar rules</text>
+
+      <!-- Persona 3 -->
+      <rect x="0" y="140" width="385" height="120" rx="8" fill="#150826" stroke="#351759" stroke-width="1"/>
+      <text x="20" y="172" fill="#f8fafc" font-family="system-ui" font-size="14" font-weight="700">🎯 Senior Tech Interviewer</text>
+      <text x="20" y="195" fill="#94a3b8" font-family="system-ui" font-size="11">Conducts interactive mock coding interviews with hints and complexity analysis.</text>
+      <text x="20" y="225" fill="#64748b" font-family="monospace" font-size="10">Temp: 0.4 • Socratic questioning</text>
+
+      <!-- Persona 4 -->
+      <rect x="415" y="140" width="385" height="120" rx="8" fill="#150826" stroke="#351759" stroke-width="1"/>
+      <text x="435" y="172" fill="#f8fafc" font-family="system-ui" font-size="14" font-weight="700">✍ Technical Documentation Lead</text>
+      <text x="435" y="195" fill="#94a3b8" font-family="system-ui" font-size="11">Generates comprehensive OpenAPI schemas, markdown READMEs, and tutorials.</text>
+      <text x="435" y="225" fill="#64748b" font-family="monospace" font-size="10">Temp: 0.5 • Crisp prose &amp; diagrams</text>
+    </g>
+
+    <!-- Save button -->
+    <rect x="30" y="340" width="220" height="42" rx="8" fill="#a855f7"/>
+    <text x="65" y="366" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="700">Apply System Persona</text>
+  </g>
+</svg>

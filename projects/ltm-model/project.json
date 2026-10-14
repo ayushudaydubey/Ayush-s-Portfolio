@@ -1,0 +1,86 @@
+{
+  "slug": "ltm-model",
+  "title": "LTM Model",
+  "category": "AI & Neural Language Memory Platform",
+  "order": 8,
+  "shortDescription": "A high-performance machine learning deployment interface for Long-Term Memory (LTM) models, featuring sequence inference, memory retention benchmarks, and dynamic parameter tuning.",
+  "overview": "LTM Model is a dedicated web interface and API deployment for experimenting with Long-Term Memory language architectures. Designed for AI engineers and researchers, it enables users to test token context retention across extended sequence windows, visualize attention decay, calibrate temperature and top-p sampling, and benchmark inference latencies.",
+  "problem": "Evaluating language models with extended context lengths typically requires running local command-line scripts or heavy notebooks that are inaccessible to non-ML teammates and stakeholders.",
+  "solution": "Engineered a lightweight, responsive web interface deployed on Render that connects to model inference endpoints, streams token output, and graphs context memory retention curves in real time.",
+  "role": "Full Stack AI Developer",
+  "timeline": "2 Months",
+  "featured": true,
+  "liveUrl": "https://ltm-model.onrender.com/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "LTM Model sequence generation interface with parameter tuning sliders and live token streaming.",
+      "alt": "LTM Model sequence generation interface"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Context memory retention analysis chart comparing recall accuracy across extended token lengths.",
+      "alt": "LTM Model memory retention analysis dashboard"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "Inference telemetry displaying latency benchmarks and token generation speeds.",
+      "alt": "LTM Model inference telemetry and performance metrics"
+    }
+  ],
+  "metrics": [
+    { "label": "Deployment", "value": "Live on Render Cloud" },
+    { "label": "Token Context", "value": "Long-horizon memory testing" },
+    { "label": "Sampling", "value": "Dynamic temp & top-p tuning" },
+    { "label": "Latency", "value": "Real-time streaming benchmarks" }
+  ],
+  "technologies": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "Python / ML", "category": "Backend" },
+    { "name": "REST API", "category": "Backend" },
+    { "name": "Tailwind CSS", "category": "Frontend" }
+  ],
+  "features": [
+    {
+      "title": "Extended Context Sequence Generation",
+      "description": "Input long-horizon prompts and inspect model completions with highlighted token probabilities and attention weightings.",
+      "icon": "Zap"
+    },
+    {
+      "title": "Real-Time Parameter Calibration",
+      "description": "Interactive sliders to adjust temperature, top-k, repetition penalties, and max sequence lengths on the fly.",
+      "icon": "Sliders"
+    },
+    {
+      "title": "Memory Retention Analytics",
+      "description": "Visual charts tracking how accurately the model recalls facts mentioned thousands of tokens earlier in the conversation.",
+      "icon": "Activity"
+    },
+    {
+      "title": "Inference Latency Telemetry",
+      "description": "Live metrics on time-to-first-token (TTFT), token generation throughput, and GPU/memory utilization stats.",
+      "icon": "Cpu"
+    }
+  ],
+  "contributions": [
+    "Built the full responsive web application with dark-mode cyber styling and real-time streaming output panes.",
+    "Integrated backend API proxies that handle model inference requests and buffer incoming token streams.",
+    "Developed interactive parameter controls and visual charts for memory retention benchmarking.",
+    "Deployed and optimized the application on Render with automatic health check monitoring."
+  ],
+  "challenges": [
+    {
+      "title": "Handling High-Memory Model Cold Starts on Free Tiers",
+      "challenge": "When hosted instances idle, initial model reload requests could trigger HTTP 504 gateway timeouts before memory buffers warm up.",
+      "solution": "Implemented an exponential backoff client retry strategy with friendly visual loading states and a lightweight health-check ping on page load."
+    },
+    {
+      "title": "Rendering High-Volume Token Output Without DOM Freeze",
+      "challenge": "Rapid incoming token updates caused continuous DOM reflows that degraded browser UI responsiveness during long generations.",
+      "solution": "Batched incoming stream chunks into 50ms animation frame slices using `requestAnimationFrame`, preventing main thread UI blocking."
+    }
+  ]
+}

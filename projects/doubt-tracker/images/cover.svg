@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="dtBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#140a04"/>
+      <stop offset="50%" stop-color="#1e1006"/>
+      <stop offset="100%" stop-color="#0a0502"/>
+    </linearGradient>
+    <linearGradient id="dtGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="50%" stop-color="#ea580c"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <filter id="dtGlow">
+      <feGaussianBlur stdDeviation="30" result="dtg"/>
+      <feComposite in="SourceGraphic" in2="dtg" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#dtBg)"/>
+  <circle cx="980" cy="150" r="180" fill="#f59e0b" opacity="0.16" filter="url(#dtGlow)"/>
+  <circle cx="200" cy="500" r="180" fill="#ea580c" opacity="0.12" filter="url(#dtGlow)"/>
+
+  <rect x="80" y="60" width="1040" height="555" rx="16" fill="#140b04" stroke="#f59e0b" stroke-opacity="0.35" stroke-width="1.5"/>
+
+  <!-- Top bar -->
+  <rect x="80" y="60" width="1040" height="48" rx="16" fill="#241407"/>
+  <circle cx="112" cy="84" r="6" fill="#ef4444"/>
+  <circle cx="132" cy="84" r="6" fill="#f59e0b"/>
+  <circle cx="152" cy="84" r="6" fill="#10b981"/>
+  <text x="180" y="89" fill="#e2e8f0" font-family="system-ui" font-size="13" font-weight="600">Doubt Tracker — Collaborative Academic &amp; Developer Issue Resolver</text>
+  <rect x="940" y="72" width="160" height="24" rx="12" fill="#3b200b"/>
+  <circle cx="955" cy="84" r="4" fill="#10b981"/>
+  <text x="968" y="88" fill="#f59e0b" font-family="system-ui" font-size="11" font-weight="700">VERCEL DEPLOYMENT</text>
+
+  <!-- Left: Issue Filter & Categories -->
+  <g transform="translate(110, 130)">
+    <rect x="0" y="0" width="240" height="310" rx="10" fill="#100803" stroke="#3d210b" stroke-width="1.2"/>
+    <text x="20" y="32" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="700">STATUS LIFECYCLE</text>
+    
+    <rect x="15" y="50" width="210" height="36" rx="6" fill="#241207"/>
+    <text x="30" y="73" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="700">All Doubts (48)</text>
+
+    <rect x="15" y="92" width="210" height="36" rx="6" fill="#100803"/>
+    <text x="30" y="115" fill="#f87171" font-family="system-ui" font-size="12">● Open Questions (12)</text>
+
+    <rect x="15" y="134" width="210" height="36" rx="6" fill="#100803"/>
+    <text x="30" y="157" fill="#fbbf24" font-family="system-ui" font-size="12">● In Review (8)</text>
+
+    <rect x="15" y="176" width="210" height="36" rx="6" fill="#100803"/>
+    <text x="30" y="199" fill="#34d399" font-family="system-ui" font-size="12">✔ Resolved (28)</text>
+
+    <text x="20" y="240" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="700">POPULAR TAGS</text>
+    <rect x="15" y="255" width="85" height="24" rx="4" fill="#291508"/>
+    <text x="26" y="271" fill="#fcd34d" font-family="monospace" font-size="10">#react</text>
+
+    <rect x="108" y="255" width="85" height="24" rx="4" fill="#291508"/>
+    <text x="119" y="271" fill="#fcd34d" font-family="monospace" font-size="10">#node</text>
+  </g>
+
+  <!-- Right: Doubt Feed & Verified Solution -->
+  <g transform="translate(370, 130)">
+    <rect x="0" y="0" width="720" height="310" rx="10" fill="#100803" stroke="#3d210b" stroke-width="1.2"/>
+    <rect x="0" y="0" width="720" height="42" rx="10" fill="#1c0f06"/>
+    <text x="20" y="26" fill="#ffffff" font-family="system-ui" font-size="13" font-weight="700">Doubt #104: Handling useEffect race conditions in Next.js 15</text>
+    <rect x="600" y="10" width="100" height="22" rx="4" fill="#10b981" fill-opacity="0.2"/>
+    <text x="615" y="25" fill="#34d399" font-family="system-ui" font-size="10" font-weight="700">✔ RESOLVED</text>
+
+    <!-- Doubt Description with code block -->
+    <g transform="translate(25, 55)">
+      <text x="0" y="18" fill="#e2e8f0" font-family="system-ui" font-size="12">When fast route changes occur during fetch calls, unmounted states throw warnings.</text>
+      
+      <!-- Code Box -->
+      <rect x="0" y="32" width="670" height="80" rx="6" fill="#070301" stroke="#3d210b" stroke-width="1"/>
+      <text x="15" y="55" fill="#f59e0b" font-family="monospace" font-size="10">const controller = new AbortController();</text>
+      <text x="15" y="75" fill="#fcd34d" font-family="monospace" font-size="10">fetch(url, { signal: controller.signal }).then(...);</text>
+      <text x="15" y="95" fill="#34d399" font-family="monospace" font-size="10">return () =&gt; controller.abort(); // Cleanup prevents memory leak</text>
+
+      <!-- Verified Solution Card -->
+      <rect x="0" y="125" width="670" height="110" rx="6" fill="#1a1106" stroke="#f59e0b" stroke-width="1"/>
+      <text x="15" y="150" fill="#34d399" font-family="system-ui" font-size="11" font-weight="700">★ VERIFIED SOLUTION ACCEPTED BY AUTHOR:</text>
+      <text x="15" y="172" fill="#cbd5e1" font-family="system-ui" font-size="11">Using AbortController signals inside the cleanup callback completely resolves unmounted state mutations.</text>
+      <text x="15" y="210" fill="#94a3b8" font-family="system-ui" font-size="10">Answered by Ayush Dubey • 4 upvotes • Solution pinned</text>
+    </g>
+  </g>
+
+  <!-- Bottom: Metrics Bar -->
+  <g transform="translate(110, 465)">
+    <rect x="0" y="0" width="980" height="125" rx="10" fill="#140b04" stroke="#3d210b" stroke-width="1"/>
+    <g transform="translate(40, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">3-Tier</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">Workflow States</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Open, Review, Resolved</text>
+    </g>
+    <g transform="translate(280, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">Markdown</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">Syntax Highlighted</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Code snippets &amp; logs</text>
+    </g>
+    <g transform="translate(520, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">Tagged</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">Multi-Key Indexing</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Sub-30ms search queries</text>
+    </g>
+    <g transform="translate(760, 25)">
+      <text x="0" y="25" fill="#f8fafc" font-family="system-ui" font-size="28" font-weight="800">MERN</text>
+      <text x="0" y="55" fill="#f59e0b" font-family="system-ui" font-size="12" font-weight="600">React + Express</text>
+      <text x="0" y="75" fill="#94a3b8" font-family="system-ui" font-size="11">Vercel live deployment</text>
+    </g>
+  </g>
+</svg>

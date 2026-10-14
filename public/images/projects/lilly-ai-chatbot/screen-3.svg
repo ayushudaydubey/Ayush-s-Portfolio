@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ai3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0719"/>
+      <stop offset="100%" stop-color="#05020a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#ai3)"/>
+  <rect x="40" y="40" width="920" height="520" rx="12" fill="#140824" stroke="#a855f7" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="40" width="920" height="42" rx="12" fill="#200d38"/>
+  <circle cx="65" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="82" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="99" cy="61" r="5" fill="#10b981"/>
+  <text x="125" y="66" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Saved Chat History &amp; Markdown Session Exporter</text>
+
+  <g transform="translate(70, 110)">
+    <rect x="0" y="0" width="860" height="420" rx="8" fill="#10061c" stroke="#351759" stroke-width="1"/>
+    <text x="30" y="38" fill="#f8fafc" font-family="system-ui" font-size="16" font-weight="800">Persisted Conversation Sessions</text>
+
+    <g transform="translate(30, 65)">
+      <rect x="0" y="0" width="800" height="65" rx="6" fill="#1f0e35" stroke="#a855f7" stroke-width="1"/>
+      <text x="20" y="28" fill="#f8fafc" font-family="system-ui" font-size="13" font-weight="700">Distributed Node.js Worker Pipeline Optimization</text>
+      <text x="20" y="48" fill="#94a3b8" font-family="system-ui" font-size="11">14 messages • 2 code snippets • Exported as Markdown</text>
+      <rect x="680" y="18" width="100" height="30" rx="4" fill="#a855f7" fill-opacity="0.3"/>
+      <text x="702" y="38" fill="#c084fc" font-family="system-ui" font-size="11" font-weight="600">⬇ Export</text>
+
+      <rect x="0" y="80" width="800" height="65" rx="6" fill="#140924"/>
+      <text x="20" y="108" fill="#f8fafc" font-family="system-ui" font-size="13" font-weight="700">Next.js 15 App Router Dynamic Params &amp; Static Export</text>
+      <text x="20" y="128" fill="#94a3b8" font-family="system-ui" font-size="11">8 messages • generateStaticParams guidance</text>
+      <rect x="680" y="98" width="100" height="30" rx="4" fill="#2d134c"/>
+      <text x="702" y="118" fill="#cbd5e1" font-family="system-ui" font-size="11">⬇ Export</text>
+
+      <rect x="0" y="160" width="800" height="65" rx="6" fill="#140924"/>
+      <text x="20" y="188" fill="#f8fafc" font-family="system-ui" font-size="13" font-weight="700">PostgreSQL CIE-Lab Spatial Indexing &amp; Prisma Queries</text>
+      <text x="20" y="208" fill="#94a3b8" font-family="system-ui" font-size="11">22 messages • Euclidean distance vs Cube queries</text>
+      <rect x="680" y="178" width="100" height="30" rx="4" fill="#2d134c"/>
+      <text x="702" y="198" fill="#cbd5e1" font-family="system-ui" font-size="11">⬇ Export</text>
+    </g>
+
+    <g transform="translate(30, 340)">
+      <text x="0" y="20" fill="#a78bfa" font-family="system-ui" font-size="12">✔ LocalStorage sync enabled • Zero data sent to 3rd party training sets</text>
+    </g>
+  </g>
+</svg>

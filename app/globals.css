@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fafaf9;
+  --foreground: #18181b;
+  --muted: #71717a;
+  --border: #e4e4e7;
+  --accent: #2563eb;
+  --accent-soft: #dbeafe;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fafaf9;
+  color: #18181b;
+  overflow-x: hidden;
 }
+
+/* Section eyebrow label style — consistent across all sections */
+.section-label {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #71717a;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafaf9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* Pastel Hero Background Animations */
+@keyframes pastel-float-blue {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.7;
+  }
+  33% {
+    transform: translate3d(50px, -35px, 0) scale(1.08);
+    opacity: 0.55;
+  }
+  66% {
+    transform: translate3d(-30px, 30px, 0) scale(0.94);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(35px, -15px, 0) scale(1.04);
+    opacity: 0.65;
+  }
+}
+
+@keyframes pastel-float-pink {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.65;
+  }
+  33% {
+    transform: translate3d(-45px, 35px, 0) scale(1.06);
+    opacity: 0.75;
+  }
+  66% {
+    transform: translate3d(40px, -25px, 0) scale(0.92);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(-15px, 15px, 0) scale(1.02);
+    opacity: 0.7;
+  }
+}
+
+@keyframes pastel-float-green {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 0.6;
+  }
+  33% {
+    transform: translate3d(35px, 45px, 0) scale(0.95);
+    opacity: 0.75;
+  }
+  66% {
+    transform: translate3d(-40px, -30px, 0) scale(1.08);
+    opacity: 0.55;
+  }
+  100% {
+    transform: translate3d(25px, 20px, 0) scale(1);
+    opacity: 0.65;
+  }
+}
+
+.animate-pastel-blue {
+  animation: pastel-float-blue 16s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-pastel-pink {
+  animation: pastel-float-pink 18s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+.animate-pastel-green {
+  animation: pastel-float-green 20s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* Respect user's motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

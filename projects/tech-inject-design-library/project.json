@@ -1,0 +1,86 @@
+{
+  "slug": "tech-inject-design-library",
+  "title": "Tech Inject Design Library",
+  "category": "Developer Tooling & UI System",
+  "order": 2,
+  "shortDescription": "A modern, highly accessible React component system and interactive design library crafted with Tailwind CSS, Framer Motion, and direct-source component generation.",
+  "overview": "Tech Inject Design Library is an enterprise-grade UI system built with React, TypeScript, Tailwind CSS, and Framer Motion. Inspired by clean developer-first philosophies, it provides developers with copy-ready, animated, accessible components with zero package bloat, rich micro-interactions, and deep theme customization.",
+  "problem": "Traditional npm component libraries introduce package bloat, lock projects into rigid styling abstractions, and make customizing component internals tedious and fragile.",
+  "solution": "Created an interactive design library platform with a live component showcase, customizable theme tokens, responsive previews, and zero-overhead copyable source code.",
+  "role": "Lead Frontend Architect",
+  "timeline": "4 Months",
+  "featured": true,
+  "liveUrl": "https://tech-inject-design-library.vercel.app/",
+  "githubUrl": null,
+  "coverImage": "images/cover.png",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "Component documentation catalog with live code preview and interactive prop toggles.",
+      "alt": "Tech Inject Design Library documentation catalog"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Bento grid layout and accessible card primitives in dark mode.",
+      "alt": "Tech Inject bento grid components showcase"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "Theme token customizer displaying real-time CSS variable updates.",
+      "alt": "Tech Inject theme token customization"
+    }
+  ],
+  "metrics": [
+    { "label": "Components", "value": "35+ accessible components" },
+    { "label": "Bundle Overhead", "value": "0kb (direct source copy)" },
+    { "label": "Compliance", "value": "100% WCAG 2.1 AA accessible" },
+    { "label": "Performance", "value": "60 FPS spring physics" }
+  ],
+  "technologies": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "TypeScript", "category": "Frontend" },
+    { "name": "Tailwind CSS", "category": "Frontend" },
+    { "name": "Framer Motion", "category": "Frontend" },
+    { "name": "Radix UI", "category": "AI & Libraries" }
+  ],
+  "features": [
+    {
+      "title": "Zero-Overhead Direct Source",
+      "description": "Copy clean, modular, typed React components directly into your codebase with complete styling ownership.",
+      "icon": "Code"
+    },
+    {
+      "title": "Motion-Engineered Physics",
+      "description": "Pre-configured Framer Motion spring physics, micro-interactions, and smooth layout morphing.",
+      "icon": "Sparkles"
+    },
+    {
+      "title": "Complete Theme Tokenization",
+      "description": "Semantic CSS variables supporting instant light, dark, and vibrant high-contrast color schemes.",
+      "icon": "Palette"
+    },
+    {
+      "title": "Interactive Live Playground",
+      "description": "Inspect component states, tweak props live, view source code, and test keyboard accessibility.",
+      "icon": "Monitor"
+    }
+  ],
+  "contributions": [
+    "Engineered 35+ accessible UI primitives including command palettes, glowing cards, bento grids, and interactive dialogs.",
+    "Designed the full documentation showcase platform with live prop tweak controls and code copy tools.",
+    "Configured automated accessibility tests with axe-core and visual regression checks.",
+    "Standardized dark mode CSS tokens and spring animation presets."
+  ],
+  "challenges": [
+    {
+      "title": "Smooth Layout Morphing Without DOM Repaint Jank",
+      "challenge": "Combining dynamic expanders with nested modal overlays caused layout shifts on lower-spec mobile devices.",
+      "solution": "Employed GPU-accelerated CSS transforms (`translate3d`, `scale`) coupled with Framer Motion `layoutId` tags and CSS will-change optimizations."
+    },
+    {
+      "title": "Accessible Keyboard Trapping in Custom Dialogs",
+      "challenge": "Ensuring tab focus stayed constrained within animated overlays without interfering with background page focus.",
+      "solution": "Integrated Radix UI focus-trap primitives wrapped inside Framer Motion AnimatePresence boundaries."
+    }
+  ]
+}

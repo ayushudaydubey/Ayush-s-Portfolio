@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="b3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070f1e"/>
+      <stop offset="100%" stop-color="#040913"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#b3)"/>
+  <rect x="40" y="40" width="920" height="520" rx="12" fill="#0c1930" stroke="#38bdf8" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="40" width="920" height="42" rx="12" fill="#142646"/>
+  <circle cx="65" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="82" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="99" cy="61" r="5" fill="#10b981"/>
+  <text x="125" y="66" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Architectural Spec Board &amp; PDF Exporter</text>
+
+  <g transform="translate(70, 110)">
+    <rect x="0" y="0" width="860" height="420" rx="8" fill="#122340" stroke="#254374" stroke-width="1"/>
+    <text x="25" y="35" fill="#f8fafc" font-family="system-ui" font-size="14" font-weight="700">Project Spec Sheet: The Modern Loft Residence (Unit 4B)</text>
+    <text x="25" y="60" fill="#94a3b8" font-family="system-ui" font-size="12">Export-ready architectural summary with brand paint SKU codes and contractor formulas</text>
+
+    <!-- Spec table -->
+    <g transform="translate(25, 85)">
+      <rect x="0" y="0" width="810" height="48" rx="6" fill="#182c4f"/>
+      <text x="20" y="28" fill="#f8fafc" font-family="system-ui" font-size="11" font-weight="700">SURFACE</text>
+      <text x="180" y="28" fill="#f8fafc" font-family="system-ui" font-size="11" font-weight="700">BRAND &amp; COLOR</text>
+      <text x="400" y="28" fill="#f8fafc" font-family="system-ui" font-size="11" font-weight="700">FINISH TYPE</text>
+      <text x="600" y="28" fill="#f8fafc" font-family="system-ui" font-size="11" font-weight="700">SKU CODE</text>
+
+      <rect x="0" y="55" width="810" height="48" rx="6" fill="#0d182b"/>
+      <text x="20" y="83" fill="#cbd5e1" font-family="system-ui" font-size="11">North Living Wall</text>
+      <text x="180" y="83" fill="#38bdf8" font-family="system-ui" font-size="11" font-weight="600">Sherwin-Williams Naval (#6244)</text>
+      <text x="400" y="83" fill="#cbd5e1" font-family="system-ui" font-size="11">Velvet Matte</text>
+      <text x="600" y="83" fill="#94a3b8" font-family="monospace" font-size="11">SW-6244-VM-2</text>
+
+      <rect x="0" y="110" width="810" height="48" rx="6" fill="#0d182b"/>
+      <text x="20" y="138" fill="#cbd5e1" font-family="system-ui" font-size="11">Ceiling &amp; Crown Trim</text>
+      <text x="180" y="138" fill="#38bdf8" font-family="system-ui" font-size="11" font-weight="600">Benjamin Moore Chantilly (#OC-65)</text>
+      <text x="400" y="138" fill="#cbd5e1" font-family="system-ui" font-size="11">Flat Latex</text>
+      <text x="600" y="138" fill="#94a3b8" font-family="monospace" font-size="11">BM-OC-65-FL</text>
+
+      <rect x="0" y="165" width="810" height="48" rx="6" fill="#0d182b"/>
+      <text x="20" y="193" fill="#cbd5e1" font-family="system-ui" font-size="11">Kitchen Island Millwork</text>
+      <text x="180" y="193" fill="#38bdf8" font-family="system-ui" font-size="11" font-weight="600">Farrow &amp; Ball Studio Green (#93)</text>
+      <text x="400" y="193" fill="#cbd5e1" font-family="system-ui" font-size="11">Estate Eggshell</text>
+      <text x="600" y="193" fill="#94a3b8" font-family="monospace" font-size="11">FB-EST-93-EG</text>
+    </g>
+
+    <!-- Download action button -->
+    <rect x="25" y="325" width="220" height="45" rx="8" fill="#2563eb"/>
+    <text x="50" y="352" fill="#ffffff" font-family="system-ui" font-size="12" font-weight="700">⬇ Download PDF Spec Sheet</text>
+  </g>
+</svg>

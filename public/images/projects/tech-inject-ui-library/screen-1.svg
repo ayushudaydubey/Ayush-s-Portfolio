@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="p1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e0a1a"/>
+      <stop offset="100%" stop-color="#07040f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="600" fill="url(#p1)"/>
+  <rect x="40" y="40" width="920" height="520" rx="12" fill="#130e24" stroke="#a855f7" stroke-opacity="0.3" stroke-width="1.5"/>
+  <rect x="40" y="40" width="920" height="42" rx="12" fill="#1c1436"/>
+  <circle cx="65" cy="61" r="5" fill="#ef4444"/>
+  <circle cx="82" cy="61" r="5" fill="#f59e0b"/>
+  <circle cx="99" cy="61" r="5" fill="#10b981"/>
+  <text x="125" y="66" fill="#cbd5e1" font-family="system-ui" font-size="12" font-weight="600">Documentation &amp; Interactive Code Playground</text>
+
+  <!-- Sidebar -->
+  <rect x="65" y="105" width="200" height="430" rx="8" fill="#181130" stroke="#2d1f50" stroke-width="1"/>
+  <text x="85" y="135" fill="#a78bfa" font-family="system-ui" font-size="12" font-weight="700">COMPONENTS</text>
+  <text x="85" y="165" fill="#c084fc" font-family="system-ui" font-size="11" font-weight="600">▸ Bento Grid (Active)</text>
+  <text x="85" y="195" fill="#94a3b8" font-family="system-ui" font-size="11">  Dialog Pro</text>
+  <text x="85" y="225" fill="#94a3b8" font-family="system-ui" font-size="11">  Command Menu</text>
+  <text x="85" y="255" fill="#94a3b8" font-family="system-ui" font-size="11">  Magnetic Button</text>
+  <text x="85" y="285" fill="#94a3b8" font-family="system-ui" font-size="11">  Infinite Marquee</text>
+  <text x="85" y="315" fill="#94a3b8" font-family="system-ui" font-size="11">  Sparkle Text</text>
+  <text x="85" y="345" fill="#94a3b8" font-family="system-ui" font-size="11">  Glow Card</text>
+  <text x="85" y="375" fill="#94a3b8" font-family="system-ui" font-size="11">  Spotlight Accordion</text>
+
+  <!-- Main View -->
+  <rect x="285" y="105" width="650" height="430" rx="8" fill="#0d0818" stroke="#2d1f50" stroke-width="1"/>
+  <text x="310" y="140" fill="#f8fafc" font-family="system-ui" font-size="18" font-weight="700">BentoGrid</text>
+  <text x="310" y="165" fill="#94a3b8" font-family="system-ui" font-size="12">An asymmetrical layout container engineered for showcases, feature cards, and portfolios.</text>
+
+  <!-- Live Code Box -->
+  <rect x="310" y="190" width="600" height="150" rx="6" fill="#150f28" stroke="#3b2b68" stroke-width="1"/>
+  <text x="325" y="220" fill="#e2e8f0" font-family="monospace" font-size="11">&lt;BentoGrid className="max-w-4xl mx-auto"&gt;</text>
+  <text x="345" y="245" fill="#e2e8f0" font-family="monospace" font-size="11">&lt;BentoCard title="Spring Physics" icon={&lt;Sparkles /&gt;} colSpan={2} /&gt;</text>
+  <text x="345" y="270" fill="#e2e8f0" font-family="monospace" font-size="11">&lt;BentoCard title="Zero Overhead" badge="Fast" /&gt;</text>
+  <text x="325" y="295" fill="#e2e8f0" font-family="monospace" font-size="11">&lt;/BentoGrid&gt;</text>
+
+  <!-- Props Table -->
+  <rect x="310" y="360" width="600" height="155" rx="6" fill="#181130" stroke="#2d1f50" stroke-width="1"/>
+  <text x="325" y="390" fill="#f8fafc" font-family="system-ui" font-size="12" font-weight="600">Configurable Props</text>
+  <text x="325" y="420" fill="#a78bfa" font-family="monospace" font-size="11">colSpan: 1 | 2 | 3 | "full" (default: 1)</text>
+  <text x="325" y="445" fill="#a78bfa" font-family="monospace" font-size="11">glowColor: "purple" | "lime" | "pink" | "cyan"</text>
+  <text x="325" y="470" fill="#a78bfa" font-family="monospace" font-size="11">animateHover: boolean (default: true)</text>
+</svg>
