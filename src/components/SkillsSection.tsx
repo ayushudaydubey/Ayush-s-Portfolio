@@ -106,17 +106,15 @@ export function SkillsSection() {
                     key={group.category}
                     type="button"
                     onClick={() => setActiveIndex(index)}
-                    className={`px-3.5 py-1.5 rounded-full text-xs uppercase font-medium whitespace-nowrap transition-colors cursor-pointer ${
-                      isActive
+                    className={`px-3.5 py-1.5 rounded-full text-xs uppercase font-medium whitespace-nowrap transition-colors cursor-pointer ${isActive
                         ? "bg-[#18181B] text-white"
                         : "bg-white text-zinc-600 border border-[#E4E4E7] hover:bg-zinc-50"
-                    }`}
+                      }`}
                   >
                     <span>{group.category}</span>
                     <span
-                      className={`ml-1.5 text-[10px] font-mono ${
-                        isActive ? "text-zinc-300" : "text-[#A1A1AA]"
-                      }`}
+                      className={`ml-1.5 text-[10px] font-mono ${isActive ? "text-zinc-300" : "text-[#A1A1AA]"
+                        }`}
                     >
                       ({group.skills.length})
                     </span>
@@ -170,9 +168,8 @@ export function SkillsSection() {
                           />
                         )}
                         <span
-                          className={`text-xs font-mono transition-colors duration-300 ${
-                            isActive ? "text-[#18181B] font-semibold" : "text-[#A1A1AA]"
-                          }`}
+                          className={`text-xs font-mono transition-colors duration-300 ${isActive ? "text-[#18181B] font-semibold" : "text-[#A1A1AA]"
+                            }`}
                         >
                           {`0${index + 1}`}
                         </span>
@@ -180,11 +177,10 @@ export function SkillsSection() {
 
                       {/* Large Thin Uppercase Editorial Heading */}
                       <span
-                        className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl uppercase tracking-tight transition-colors duration-300 truncate ${
-                          isActive
+                        className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl uppercase tracking-tight transition-colors duration-300 truncate ${isActive
                             ? "text-[#18181B] font-normal"
                             : "text-[#A1A1AA] font-light hover:text-zinc-600"
-                        }`}
+                          }`}
                       >
                         {group.category}
                       </span>
@@ -199,9 +195,9 @@ export function SkillsSection() {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeCategory.category}
-                  initial={shouldReduceMotion ? false : { opacity: 0, y: 12 }}
+                  initial={shouldReduceMotion ? undefined : { opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={shouldReduceMotion ? false : { opacity: 0, y: -12 }}
+                  exit={shouldReduceMotion ? undefined : { opacity: 0, y: -12 }}
                   transition={transitionConfig}
                   className="w-full bg-transparent min-h-[360px] flex flex-col justify-between"
                 >
