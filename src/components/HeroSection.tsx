@@ -1,25 +1,34 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
-import { SectionPastelBackground } from "./SectionPastelBackground";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-zinc-200/80 bg-[#FAFAF9]">
-      <SectionPastelBackground variant="pink-left" />
-      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-start text-left">
+    <section className="relative overflow-hidden min-h-[calc(100vh-4rem)] flex items-center bg-[#FAFAF9] border-b border-zinc-200/80">
+      {/* Full-Screen Edge-to-Edge Background Image */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <Image
+          src="/portfolio-man.webp"
+          alt="Ayush Dubey"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[76%_10%] sm:object-[78%_14%] md:object-[82%_20%] lg:object-[85%_22%]"
+        />
+
+        {/* Desktop smooth gradient on the left side (stops before 55% so portrait is 100% clear) */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-[#FAFAF9]/90 via-[#FAFAF9]/40 to-transparent to-55% z-10 pointer-events-none" />
+      </div>
+
+      <div className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-10 sm:py-16">
+        <div className="flex flex-col items-start text-left max-w-xl lg:max-w-2xl bg-white/85 sm:bg-white/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-5 sm:p-7 md:p-0 rounded-2xl md:rounded-none border border-white/70 md:border-none shadow-[0_8px_32px_rgba(0,0,0,0.06)] md:shadow-none">
           {/* Small uppercase label */}
-          <div className="flex items-center gap-2 mb-4">
+          <div className="mb-4">
             <span className="section-label">
               FULL STACK / MERN STACK DEVELOPER
-            </span>
-            <span className="text-zinc-300">•</span>
-            <span className="inline-flex items-center gap-1.5 text-xs text-zinc-600">
-              <span className="h-2 w-2 rounded-full bg-emerald-500" />
-              <span>Available for roles</span>
             </span>
           </div>
 
@@ -29,12 +38,12 @@ export function HeroSection() {
           </h1>
 
           {/* Supporting Headline */}
-          <p className="text-xl sm:text-2xl font-light text-zinc-600 tracking-tight mb-6">
+          <p className="text-xl sm:text-2xl font-light text-zinc-700 tracking-tight mb-6">
             Building useful products for the web.
           </p>
 
           {/* Concise Introduction */}
-          <p className="text-[15px] sm:text-base text-zinc-600 leading-relaxed max-w-2xl mb-8">
+          <p className="text-[15px] sm:text-base text-zinc-600 leading-relaxed max-w-xl mb-8">
             Full Stack Developer specializing in React.js, Next.js, Node.js, Express.js, REST APIs, MongoDB, and PostgreSQL with proven experience building scalable production applications.
           </p>
 
@@ -50,7 +59,7 @@ export function HeroSection() {
 
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-200 bg-white/90 text-zinc-800 text-sm font-medium hover:bg-white hover:border-zinc-300 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-zinc-200 bg-white/90 text-zinc-800 text-sm font-medium hover:bg-white hover:border-zinc-300 transition-colors cursor-pointer backdrop-blur-xs"
             >
               <span>Contact Me</span>
             </Link>

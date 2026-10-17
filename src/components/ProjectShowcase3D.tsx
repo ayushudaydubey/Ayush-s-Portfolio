@@ -10,7 +10,7 @@ import {
   useSpring,
   type MotionValue,
 } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Project } from "@/src/types/project";
 
 interface ProjectShowcase3DProps {
@@ -44,59 +44,59 @@ function CurvedCard({
   const rotateY = useTransform(
     smoothProgress,
     [
-      targetP - step * 2.5,
-      targetP - step * 1.2,
+      targetP - step * 2.2,
+      targetP - step * 1.1,
       targetP,
-      targetP + step * 1.2,
-      targetP + step * 2.5,
+      targetP + step * 1.1,
+      targetP + step * 2.2,
     ],
-    [-38, -22, 0, 22, 38]
+    [-28, -15, 0, 15, 28]
   );
 
   const scale = useTransform(
     smoothProgress,
     [
-      targetP - step * 2.5,
-      targetP - step * 1.2,
+      targetP - step * 2.2,
+      targetP - step * 1.1,
       targetP,
-      targetP + step * 1.2,
-      targetP + step * 2.5,
+      targetP + step * 1.1,
+      targetP + step * 2.2,
     ],
-    [1.14, 0.98, 0.86, 0.98, 1.14]
+    [1.08, 0.98, 0.90, 0.98, 1.08]
   );
 
   const z = useTransform(
     smoothProgress,
     [
-      targetP - step * 2.5,
-      targetP - step * 1.2,
+      targetP - step * 2.2,
+      targetP - step * 1.1,
       targetP,
-      targetP + step * 1.2,
-      targetP + step * 2.5,
+      targetP + step * 1.1,
+      targetP + step * 2.2,
     ],
-    [75, -10, -110, -10, 75]
+    [55, -5, -85, -5, 55]
   );
 
   const y = useTransform(
     smoothProgress,
     [
-      targetP - step * 2.5,
-      targetP - step * 1.2,
+      targetP - step * 2.2,
+      targetP - step * 1.1,
       targetP,
-      targetP + step * 1.2,
-      targetP + step * 2.5,
+      targetP + step * 1.1,
+      targetP + step * 2.2,
     ],
-    [20, 6, 0, 6, 20]
+    [16, 5, 0, 5, 16]
   );
 
   const opacity = useTransform(
     smoothProgress,
     [
-      targetP - step * 3.6,
-      targetP - step * 2.6,
+      targetP - step * 3.2,
+      targetP - step * 2.2,
       targetP,
-      targetP + step * 2.6,
-      targetP + step * 3.6,
+      targetP + step * 2.2,
+      targetP + step * 3.2,
     ],
     [0.2, 0.95, 1, 0.95, 0.2]
   );
@@ -117,61 +117,20 @@ function CurvedCard({
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="group relative block w-full h-[360px] sm:h-[420px] md:h-[460px] lg:h-[500px] rounded-2xl sm:rounded-3xl bg-zinc-900 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.16)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)] border border-white/20 transition-all duration-300"
+        title={project.title}
+        aria-label={project.title}
+        className="group relative block w-full aspect-video rounded-2xl sm:rounded-3xl bg-zinc-950 overflow-hidden shadow-[0_16px_45px_rgba(0,0,0,0.18)] hover:shadow-[0_24px_60px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300"
       >
-        {/* Full-Bleed High-Res Cover Visual */}
-        <div className="absolute inset-0 w-full h-full bg-zinc-950">
+        {/* Full-Bleed 16:9 Screenshot Visual (Complete 100% Uncut Image Display) */}
+        <div className="absolute inset-0 w-full h-full bg-zinc-950 flex items-center justify-center">
           <Image
             src={project.coverImage}
             alt={project.title}
             fill
-            sizes="(max-width: 768px) 260px, 320px"
-            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+            sizes="(max-width: 768px) 320px, 480px"
+            className="object-cover object-center"
             priority={index < 3}
           />
-        </div>
-
-        {/* Ambient Vignette Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10 opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
-
-        {/* Top Badges */}
-        <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
-          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/40 text-white/95 backdrop-blur-md border border-white/15">
-            0{index + 1}
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/40 text-white/95 backdrop-blur-md border border-white/15">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            Live
-          </span>
-        </div>
-
-        {/* Bottom Project Info Overlay */}
-        <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 z-10 flex flex-col justify-end translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
-          <span className="text-[11px] font-mono uppercase tracking-wider text-orange-400 mb-1.5 line-clamp-1">
-            {project.category}
-          </span>
-          <h3 className="text-lg sm:text-xl font-medium tracking-tight text-white mb-2 leading-snug">
-            {project.title}
-          </h3>
-
-          {/* Quick Case Study Link */}
-          <div className="flex items-center justify-between gap-3 pt-2 border-t border-white/15 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-white/95">
-              <span>View Case Study</span>
-              <ArrowRight className="w-3.5 h-3.5 text-orange-400" />
-            </span>
-            <span
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                window.open(project.liveUrl, "_blank", "noopener,noreferrer");
-              }}
-              className="inline-flex items-center gap-1 text-xs text-white/70 hover:text-white transition-colors"
-            >
-              <span>Live Site</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-white/60" />
-            </span>
-          </div>
         </div>
       </Link>
     </motion.div>
@@ -181,9 +140,10 @@ function CurvedCard({
 export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // 3D amphitheater carousel dimensions with balanced width and space
   const [dimensions, setDimensions] = useState({
-    cardWidth: 260,
-    cardGap: 24,
+    cardWidth: 480,
+    cardGap: 38,
   });
 
   const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -192,11 +152,13 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 640) {
-        setDimensions({ cardWidth: 220, cardGap: 16 });
+        setDimensions({ cardWidth: 300, cardGap: 20 });
       } else if (width < 1024) {
-        setDimensions({ cardWidth: 240, cardGap: 20 });
+        setDimensions({ cardWidth: 380, cardGap: 28 });
+      } else if (width < 1440) {
+        setDimensions({ cardWidth: 460, cardGap: 36 });
       } else {
-        setDimensions({ cardWidth: 270, cardGap: 26 });
+        setDimensions({ cardWidth: 500, cardGap: 40 });
       }
     };
 
@@ -204,6 +166,13 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Extended display list so when reaching the last project, the first cards appear on the right
+  // completing the 3D amphitheater loop without an empty void!
+  const displayProjects = [
+    ...projects,
+    ...(projects.length > 2 ? projects.slice(0, 3) : []),
+  ];
 
   // Normal vertical page scroll driving the showcase progress
   const { scrollYProgress } = useScroll({
@@ -213,17 +182,17 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
 
   // Smooth spring interpolation
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
+    stiffness: 100,
     damping: 24,
     restDelta: 0.001,
   });
 
-  // Calculate horizontal travel
+  // Calculate horizontal travel: reaches the last project cleanly, then allows natural continuation
   const stride = dimensions.cardWidth + dimensions.cardGap;
   const totalTravel = Math.max(0, (projects.length - 1) * stride);
   const trackX = useTransform(smoothProgress, [0, 1], [0, -totalTravel]);
 
-  // Update active index indicator
+  // Update active index indicator (mapped to original projects list)
   useEffect(() => {
     const unsubscribe = smoothProgress.on("change", (latest) => {
       const idx = Math.min(
@@ -255,11 +224,11 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
   return (
     <div id="projects" className="relative scroll-mt-16 bg-white">
       {/* =========================================================================
-          DESKTOP & TABLET: 3D PANORAMIC AMPHITHEATER CAROUSEL (AS PER REFERENCE IMAGE)
+          DESKTOP & TABLET: 3D PANORAMIC AMPHITHEATER CAROUSEL
           ========================================================================= */}
       <section
         ref={containerRef}
-        className="hidden md:block relative h-[320vh] bg-white border-b border-[#E4E4E7]"
+        className="hidden md:block relative h-[220vh] bg-white border-b border-[#E4E4E7]"
       >
         <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between py-8 lg:py-12">
           {/* Header Area (Centered, Matching Reference Image) */}
@@ -303,14 +272,15 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
               perspectiveOrigin: "50% 50%",
             }}
           >
-            {/* Left & Right Step Buttons */}
+            {/* Left & Right Step Buttons with Seamless Loop */}
             <div className="absolute left-6 lg:left-12 z-40">
               <button
                 type="button"
-                onClick={() => scrollToCard(Math.max(0, activeCardIndex - 1))}
-                disabled={activeCardIndex === 0}
+                onClick={() =>
+                  scrollToCard(activeCardIndex === 0 ? projects.length - 1 : activeCardIndex - 1)
+                }
                 aria-label="Previous project"
-                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white transition-all cursor-pointer"
               >
                 <ChevronLeft className="w-5 h-5" />
               </button>
@@ -319,10 +289,11 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
             <div className="absolute right-6 lg:right-12 z-40">
               <button
                 type="button"
-                onClick={() => scrollToCard(Math.min(projects.length - 1, activeCardIndex + 1))}
-                disabled={activeCardIndex === projects.length - 1}
+                onClick={() =>
+                  scrollToCard(activeCardIndex === projects.length - 1 ? 0 : activeCardIndex + 1)
+                }
                 aria-label="Next project"
-                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white transition-all cursor-pointer"
               >
                 <ChevronRight className="w-5 h-5" />
               </button>
@@ -338,9 +309,9 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
                 paddingRight: `calc(50vw - ${dimensions.cardWidth / 2}px)`,
               }}
             >
-              {projects.map((project, idx) => (
+              {displayProjects.map((project, idx) => (
                 <CurvedCard
-                  key={project.slug}
+                  key={`${project.slug}-${idx}`}
                   project={project}
                   index={idx}
                   totalCards={projects.length}
@@ -424,44 +395,26 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
             </a>
           </div>
 
-          {/* Swipe Track */}
-          <div className="flex gap-4 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-none -mx-4 px-4">
+          {/* Swipe Track (16:9 aspect ratio, larger cards, compact gap) */}
+          <div className="flex gap-4 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-none -mx-4 px-5">
             {projects.map((project, idx) => (
               <div
                 key={project.slug}
-                className="w-[78vw] max-w-[280px] h-[380px] flex-shrink-0 snap-center rounded-2xl bg-zinc-900 overflow-hidden relative shadow-lg"
+                className="w-[88vw] max-w-[380px] aspect-video flex-shrink-0 snap-center rounded-2xl bg-zinc-950 overflow-hidden relative shadow-lg"
               >
-                <Link href={`/projects/${project.slug}`} className="block w-full h-full relative">
+                <Link
+                  href={`/projects/${project.slug}`}
+                  title={project.title}
+                  aria-label={project.title}
+                  className="block w-full h-full relative"
+                >
                   <Image
                     src={project.coverImage}
                     alt={project.title}
                     fill
-                    sizes="280px"
-                    className="object-cover object-top"
+                    sizes="340px"
+                    className="object-cover object-center"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
-
-                  <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between">
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/50 text-white border border-white/15">
-                      0{idx + 1}
-                    </span>
-                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/50 text-white border border-white/15">
-                      Live
-                    </span>
-                  </div>
-
-                  <div className="absolute bottom-0 inset-x-0 p-4 z-10">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 block mb-1">
-                      {project.category}
-                    </span>
-                    <h3 className="text-base font-medium text-white mb-1.5 leading-snug">
-                      {project.title}
-                    </h3>
-                    <span className="inline-flex items-center gap-1 text-xs text-orange-400">
-                      <span>Explore case study</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </span>
-                  </div>
                 </Link>
               </div>
             ))}
