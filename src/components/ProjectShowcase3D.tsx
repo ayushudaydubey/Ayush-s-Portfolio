@@ -38,9 +38,6 @@ function CurvedCard({
   const targetP = totalCards > 1 ? index / (totalCards - 1) : 0;
   const step = totalCards > 1 ? 1 / (totalCards - 1) : 0.2;
 
-  // 3D Panoramic Amphitheater Curve:
-  // - Outer cards (left & right) are large and angle inward toward the center
-  // - Center card dips deeper in Z and faces flat toward the viewer
   const rotateY = useTransform(
     smoothProgress,
     [
@@ -151,7 +148,9 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      if (width < 640) {
+      if (width < 420) {
+        setDimensions({ cardWidth: 260, cardGap: 16 });
+      } else if (width < 640) {
         setDimensions({ cardWidth: 300, cardGap: 20 });
       } else if (width < 1024) {
         setDimensions({ cardWidth: 380, cardGap: 28 });
@@ -224,27 +223,27 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
   return (
     <div id="projects" className="relative scroll-mt-16 bg-white">
       {/* =========================================================================
-          DESKTOP & TABLET: 3D PANORAMIC AMPHITHEATER CAROUSEL
+          UNIFIED SCROLL-DRIVEN 3D AMPHITHEATER CAROUSEL (MOBILE & DESKTOP)
           ========================================================================= */}
       <section
         ref={containerRef}
-        className="hidden md:block relative h-[220vh] bg-white border-b border-[#E4E4E7]"
+        className="relative h-[240vh] bg-white border-b border-[#E4E4E7]"
       >
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between py-8 lg:py-12">
+        <div className="sticky top-16 sm:top-20 h-[calc(100dvh-4rem)] sm:h-[calc(100vh-5rem)] w-full overflow-hidden flex flex-col justify-between py-4 sm:py-8 lg:py-12">
           {/* Header Area (Centered, Matching Reference Image) */}
           <div className="w-full max-w-4xl mx-auto px-4 text-center">
             {/* Top Amber/Orange Tag */}
-            <p className="text-xs sm:text-sm font-semibold tracking-wide text-orange-600 uppercase mb-3 font-mono">
+            <p className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide text-orange-600 uppercase mb-1.5 sm:mb-3 font-mono">
               Behind the Designs
             </p>
 
             {/* Bold Headline */}
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 mb-3.5 leading-tight">
+            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 mb-2 sm:mb-3.5 leading-tight">
               Curious What Else I’ve Created?
             </h2>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base text-zinc-500 max-w-xl mx-auto mb-6 font-normal leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-zinc-500 max-w-xl mx-auto mb-3 sm:mb-6 font-normal leading-relaxed">
               Explore full-stack platforms, client systems, and interactive digital engineering in my portfolio.
             </p>
 
@@ -254,11 +253,11 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
                 href="https://github.com/ayushudaydubey"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-zinc-200/90 bg-white hover:border-zinc-300 text-sm font-medium text-zinc-800 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all group"
+                className="inline-flex items-center gap-2.5 sm:gap-3 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-zinc-200/90 bg-white hover:border-zinc-300 text-xs sm:text-sm font-medium text-zinc-800 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all group"
               >
                 <span>See more Projects</span>
-                <span className="w-6 h-6 rounded-full bg-orange-600 text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 shadow-xs">
-                  <ArrowRight className="w-3.5 h-3.5" />
+                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-orange-600 text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 shadow-xs">
+                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </span>
               </a>
             </div>
@@ -266,36 +265,36 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
 
           {/* 3D Perspective Curved Arc Stage */}
           <div
-            className="relative w-full flex-1 flex items-center overflow-visible my-2"
+            className="relative w-full flex-1 flex items-center overflow-visible my-1 sm:my-2"
             style={{
-              perspective: "1400px",
+              perspective: "1200px",
               perspectiveOrigin: "50% 50%",
             }}
           >
             {/* Left & Right Step Buttons with Seamless Loop */}
-            <div className="absolute left-6 lg:left-12 z-40">
+            <div className="absolute left-2 sm:left-6 lg:left-12 z-40">
               <button
                 type="button"
                 onClick={() =>
                   scrollToCard(activeCardIndex === 0 ? projects.length - 1 : activeCardIndex - 1)
                 }
                 aria-label="Previous project"
-                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white transition-all cursor-pointer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white transition-all cursor-pointer"
               >
-                <ChevronLeft className="w-5 h-5" />
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
 
-            <div className="absolute right-6 lg:right-12 z-40">
+            <div className="absolute right-2 sm:right-6 lg:right-12 z-40">
               <button
                 type="button"
                 onClick={() =>
                   scrollToCard(activeCardIndex === projects.length - 1 ? 0 : activeCardIndex + 1)
                 }
                 aria-label="Next project"
-                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white transition-all cursor-pointer"
+                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white transition-all cursor-pointer"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
               </button>
             </div>
 
@@ -325,126 +324,39 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
 
           {/* Bottom 4 Pillars (Matching Reference Image) */}
           <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-zinc-200/80 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pt-3 sm:pt-6 border-t border-zinc-200/80 text-center">
               <div>
-                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
                   #01
                 </span>
-                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
                   Strategy & Planning
                 </h4>
               </div>
               <div>
-                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
                   #02
                 </span>
-                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
                   Design & Development
                 </h4>
               </div>
               <div>
-                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
                   #03
                 </span>
-                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
                   Launch & Growth
                 </h4>
               </div>
               <div>
-                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
                   #04
                 </span>
-                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
                   Ongoing Support
                 </h4>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================================
-          MOBILE VIEW: CURVED TOUCH-FRIENDLY SWIPE SHOWCASE
-          ========================================================================= */}
-      <section
-        id="projects-mobile"
-        className="block md:hidden py-16 sm:py-20 border-b border-[#E4E4E7] bg-white"
-      >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          {/* Header */}
-          <div className="text-center mb-8">
-            <p className="text-xs font-semibold tracking-wide text-orange-600 uppercase mb-2 font-mono">
-              Behind the Designs
-            </p>
-            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 mb-3 leading-tight">
-              Curious What Else I’ve Created?
-            </h2>
-            <p className="text-xs text-zinc-500 leading-relaxed max-w-xs mx-auto mb-5">
-              Swipe horizontally to browse through production applications and design systems.
-            </p>
-            <a
-              href="https://github.com/ayushudaydubey"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-200 bg-white text-xs font-medium text-zinc-800 shadow-xs"
-            >
-              <span>See more Projects</span>
-              <span className="w-5 h-5 rounded-full bg-orange-600 text-white flex items-center justify-center">
-                <ArrowRight className="w-3 h-3" />
-              </span>
-            </a>
-          </div>
-
-          {/* Swipe Track (16:9 aspect ratio, larger cards, compact gap) */}
-          <div className="flex gap-4 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-none -mx-4 px-5">
-            {projects.map((project, idx) => (
-              <div
-                key={project.slug}
-                className="w-[88vw] max-w-[380px] aspect-video flex-shrink-0 snap-center rounded-2xl bg-zinc-950 overflow-hidden relative shadow-lg"
-              >
-                <Link
-                  href={`/projects/${project.slug}`}
-                  title={project.title}
-                  aria-label={project.title}
-                  className="block w-full h-full relative"
-                >
-                  <Image
-                    src={project.coverImage}
-                    alt={project.title}
-                    fill
-                    sizes="340px"
-                    className="object-cover object-center"
-                  />
-                </Link>
-              </div>
-            ))}
-          </div>
-
-          {/* Mobile Bottom 4 Pillars */}
-          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-zinc-200/70 text-center mt-6">
-            <div>
-              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
-                #01
-              </span>
-              <h4 className="text-xs font-medium text-zinc-900">Strategy & Planning</h4>
-            </div>
-            <div>
-              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
-                #02
-              </span>
-              <h4 className="text-xs font-medium text-zinc-900">Design & Development</h4>
-            </div>
-            <div>
-              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
-                #03
-              </span>
-              <h4 className="text-xs font-medium text-zinc-900">Launch & Growth</h4>
-            </div>
-            <div>
-              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
-                #04
-              </span>
-              <h4 className="text-xs font-medium text-zinc-900">Ongoing Support</h4>
             </div>
           </div>
         </div>
