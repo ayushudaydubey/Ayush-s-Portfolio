@@ -11,15 +11,15 @@ import {
 import { skillsData } from "../data/portfolio";
 import { TechLogo } from "./TechLogo";
 
-// Semicircular arc offset classes: curving inward toward the LEFT (direction: left side)
-// Items 0 & 5 are positioned right; items 2 & 3 curve deep to the left (away from right section)
+// Semicircular arc offset classes: curving outward toward the RIGHT (direction: right side)
+// Items 0 & 5 are positioned left; items 2 & 3 curve deep to the right
 const ARC_CLASSES = [
-  "translate-x-10 sm:translate-x-14 lg:translate-x-18",
-  "translate-x-5 sm:translate-x-7 lg:translate-x-9",
+  "-translate-x-10 sm:-translate-x-14 lg:-translate-x-18",
+  "-translate-x-5 sm:-translate-x-7 lg:-translate-x-9",
   "translate-x-0",
   "translate-x-0",
-  "translate-x-5 sm:translate-x-7 lg:translate-x-9",
-  "translate-x-10 sm:translate-x-14 lg:translate-x-18",
+  "-translate-x-5 sm:-translate-x-7 lg:-translate-x-9",
+  "-translate-x-10 sm:-translate-x-14 lg:-translate-x-18",
 ];
 
 export function SkillsSection() {
@@ -126,18 +126,18 @@ export function SkillsSection() {
 
           {/* Main Two-Column Layout with Generous Spacing */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 xl:gap-28 items-center">
-            {/* Left Side: Half-Circle Typography Layout (Curving to the LEFT) */}
+            {/* Left Side: Half-Circle Typography Layout (Curving to the RIGHT) */}
             <div className="hidden lg:block lg:col-span-5 relative py-6">
-              {/* Semicircular Arc Guideline (Bowing to the LEFT '(') */}
+              {/* Semicircular Arc Guideline (Bowing to the RIGHT ')') */}
               <svg
-                className="absolute left-0 top-3 bottom-3 h-[calc(100%-1.5rem)] w-28 pointer-events-none text-zinc-300/80"
+                className="absolute right-0 top-3 bottom-3 h-[calc(100%-1.5rem)] w-28 pointer-events-none text-zinc-300/80"
                 viewBox="0 0 100 340"
                 fill="none"
                 preserveAspectRatio="none"
                 aria-hidden="true"
               >
                 <path
-                  d="M 80 16 Q 10 170 80 324"
+                  d="M 20 16 Q 90 170 20 324"
                   stroke="currentColor"
                   strokeWidth="1.2"
                   strokeDasharray="3 3"
@@ -146,7 +146,7 @@ export function SkillsSection() {
               </svg>
 
               {/* 6 Curved Category Headings */}
-              <div className="space-y-4 lg:space-y-6 relative z-10 pl-1">
+              <div className="space-y-4 lg:space-y-6 relative z-10 pr-2">
                 {skillsData.map((group, index) => {
                   const isActive = activeIndex === index;
                   const arcClass = ARC_CLASSES[index] || "translate-x-0";
@@ -156,25 +156,8 @@ export function SkillsSection() {
                       key={group.category}
                       type="button"
                       onClick={() => scrollToCategory(index)}
-                      className={`group flex items-baseline gap-4 text-left transition-transform duration-300 ease-out cursor-pointer block w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 rounded-lg ${arcClass}`}
+                      className={`group flex items-baseline justify-end gap-4 text-right transition-transform duration-300 ease-out cursor-pointer w-full focus:outline-none focus-visible:ring-2 focus-visible:ring-zinc-950 rounded-lg ${arcClass}`}
                     >
-                      {/* Active Indicator & Category Number */}
-                      <span className="flex items-center gap-2 shrink-0">
-                        {isActive && (
-                          <motion.span
-                            layoutId="activeArcIndicator"
-                            className="w-1.5 h-1.5 rounded-full bg-[#18181B]"
-                            transition={{ type: "spring", stiffness: 380, damping: 28 }}
-                          />
-                        )}
-                        <span
-                          className={`text-xs font-mono transition-colors duration-300 ${isActive ? "text-[#18181B] font-semibold" : "text-[#A1A1AA]"
-                            }`}
-                        >
-                          {`0${index + 1}`}
-                        </span>
-                      </span>
-
                       {/* Large Thin Uppercase Editorial Heading */}
                       <span
                         className={`text-lg sm:text-xl lg:text-2xl xl:text-3xl uppercase tracking-tight transition-colors duration-300 truncate ${isActive
@@ -183,6 +166,25 @@ export function SkillsSection() {
                           }`}
                       >
                         {group.category}
+                      </span>
+
+                      {/* Active Indicator & Category Number */}
+                      <span className="flex items-center gap-2 shrink-0">
+                        <span
+                          className={`text-xs font-mono transition-colors duration-300 ${isActive ? "text-[#18181B] font-semibold" : "text-[#A1A1AA]"
+                            }`}
+                        >
+                          {`0${index + 1}`}
+                        </span>
+                        <span className="w-1.5 h-1.5 flex items-center justify-center shrink-0">
+                          {isActive && (
+                            <motion.span
+                              layoutId="activeArcIndicator"
+                              className="w-1.5 h-1.5 rounded-full bg-[#18181B]"
+                              transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                            />
+                          )}
+                        </span>
                       </span>
                     </button>
                   );

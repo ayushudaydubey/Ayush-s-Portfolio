@@ -2,7 +2,7 @@
   "slug": "prospect-data-engine",
   "title": "Prospect Data Engine (PDE)",
   "category": "High-Performance Data Pipeline & Backend",
-  "order": 7,
+  "order": 8,
   "shortDescription": "A high-throughput ETL engine processing large multi-gigabyte Excel datasets with worker threads, chunked streaming, configurable batching, and fault-tolerant checkpoint resume.",
   "overview": "Prospect Data Engine is engineered to solve memory saturation and crash loops when parsing massive, heterogeneous Excel (.xlsx/.csv) files containing hundreds of thousands of lead prospects. Traditional single-threaded parsers choke or exceed Node.js heap limits. This engine distributes file parsing across Node.js worker thread pools, streams rows into validated batches, and provides real-time progress telemetry with persistent crash-recovery checkpoints.",
   "problem": "Operations teams routinely deal with 500k+ row Excel workbooks that freeze standard spreadsheet tools and crash conventional web application upload endpoints due to synchronous in-memory parsing and V8 garbage collection spikes.",

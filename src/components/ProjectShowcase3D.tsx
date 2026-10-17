@@ -3,16 +3,21 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, useSpring, MotionValue } from "framer-motion";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  type MotionValue,
+} from "framer-motion";
+import { ArrowRight, ChevronLeft, ChevronRight, ArrowUpRight } from "lucide-react";
 import type { Project } from "@/src/types/project";
-import { TechLogo } from "./TechLogo";
 
 interface ProjectShowcase3DProps {
   projects: Project[];
 }
 
-interface Card3DProps {
+interface CurvedCardProps {
   project: Project;
   index: number;
   totalCards: number;
@@ -21,53 +26,84 @@ interface Card3DProps {
   cardGap: number;
 }
 
-function Card3D({
+function CurvedCard({
   project,
   index,
   totalCards,
   smoothProgress,
   cardWidth,
   cardGap,
-}: Card3DProps) {
-  // Target progress when this card is dead-center
+}: CurvedCardProps) {
+  // Target progress when this card is at the center of the 3D amphitheater
   const targetP = totalCards > 1 ? index / (totalCards - 1) : 0;
-  // Span of progress over which this card rotates & scales
-  const delta = 0.28;
+  const step = totalCards > 1 ? 1 / (totalCards - 1) : 0.2;
 
-  // 3D Rotation:
-  // When smoothProgress < targetP (card is on the right of center), rotateY is negative (angles towards center)
-  // When smoothProgress === targetP (card is in center), rotateY is 0deg (facing viewer)
-  // When smoothProgress > targetP (card is on the left of center), rotateY is positive (angles towards center)
+  // 3D Panoramic Amphitheater Curve:
+  // - Outer cards (left & right) are large and angle inward toward the center
+  // - Center card dips deeper in Z and faces flat toward the viewer
   const rotateY = useTransform(
     smoothProgress,
-    [targetP - delta, targetP, targetP + delta],
-    [-22, 0, 22]
+    [
+      targetP - step * 2.5,
+      targetP - step * 1.2,
+      targetP,
+      targetP + step * 1.2,
+      targetP + step * 2.5,
+    ],
+    [-38, -22, 0, 22, 38]
   );
 
-  // Center card is larger and prominent, edges scale down gracefully
   const scale = useTransform(
     smoothProgress,
-    [targetP - delta, targetP, targetP + delta],
-    [0.86, 1.02, 0.86]
+    [
+      targetP - step * 2.5,
+      targetP - step * 1.2,
+      targetP,
+      targetP + step * 1.2,
+      targetP + step * 2.5,
+    ],
+    [1.14, 0.98, 0.86, 0.98, 1.14]
   );
 
-  // Subtle depth z translation
   const z = useTransform(
     smoothProgress,
-    [targetP - delta, targetP, targetP + delta],
-    [-70, 25, -70]
+    [
+      targetP - step * 2.5,
+      targetP - step * 1.2,
+      targetP,
+      targetP + step * 1.2,
+      targetP + step * 2.5,
+    ],
+    [75, -10, -110, -10, 75]
   );
 
-  // Subtle opacity reduction on extreme edges to keep focus on center
+  const y = useTransform(
+    smoothProgress,
+    [
+      targetP - step * 2.5,
+      targetP - step * 1.2,
+      targetP,
+      targetP + step * 1.2,
+      targetP + step * 2.5,
+    ],
+    [20, 6, 0, 6, 20]
+  );
+
   const opacity = useTransform(
     smoothProgress,
-    [targetP - 0.42, targetP - delta, targetP, targetP + delta, targetP + 0.42],
-    [0.45, 0.85, 1, 0.85, 0.45]
+    [
+      targetP - step * 3.6,
+      targetP - step * 2.6,
+      targetP,
+      targetP + step * 2.6,
+      targetP + step * 3.6,
+    ],
+    [0.2, 0.95, 1, 0.95, 0.2]
   );
 
   return (
     <motion.div
-      className="relative flex-shrink-0 cursor-pointer select-none"
+      className="relative flex-shrink-0 select-none"
       style={{
         width: cardWidth,
         marginRight: cardGap,
@@ -75,86 +111,66 @@ function Card3D({
         rotateY,
         scale,
         z,
+        y,
         opacity,
       }}
     >
       <Link
         href={`/projects/${project.slug}`}
-        className="group block w-full h-[490px] sm:h-[530px] rounded-2xl bg-white border border-[#E4E4E7] shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.08)] hover:border-zinc-300 transition-all duration-300 overflow-hidden flex flex-col justify-between"
+        className="group relative block w-full h-[360px] sm:h-[420px] md:h-[460px] lg:h-[500px] rounded-2xl sm:rounded-3xl bg-zinc-900 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.16)] hover:shadow-[0_25px_60px_rgba(0,0,0,0.28)] border border-white/20 transition-all duration-300"
       >
-        {/* Project Screenshot / Cover Image */}
-        <div className="relative w-full h-[230px] sm:h-[260px] bg-zinc-100 overflow-hidden border-b border-[#E4E4E7]">
+        {/* Full-Bleed High-Res Cover Visual */}
+        <div className="absolute inset-0 w-full h-full bg-zinc-950">
           <Image
             src={project.coverImage}
-            alt={`${project.title} screenshot preview`}
+            alt={project.title}
             fill
-            sizes="(max-width: 768px) 100vw, 440px"
-            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            priority={index < 2}
+            sizes="(max-width: 768px) 260px, 320px"
+            className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+            priority={index < 3}
           />
-          {/* Subtle live indicator badge on top right */}
-          <div className="absolute top-3.5 right-3.5 z-10">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-white/95 text-zinc-700 border border-zinc-200/80 shadow-xs backdrop-blur-xs">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              Production
-            </span>
-          </div>
         </div>
 
-        {/* Card Body */}
-        <div className="p-6 flex flex-col justify-between flex-1">
-          <div>
-            {/* Index & Category */}
-            <div className="flex items-center justify-between text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-400 mb-2.5">
-              <span>// {String(index + 1).padStart(2, "0")}</span>
-              <span className="truncate max-w-[220px] text-zinc-500">
-                {project.category}
-              </span>
-            </div>
+        {/* Ambient Vignette Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-black/10 opacity-70 group-hover:opacity-90 transition-opacity duration-300" />
 
-            {/* Project Title */}
-            <h3 className="text-xl sm:text-2xl font-light tracking-tight text-zinc-950 mb-2 group-hover:text-zinc-600 transition-colors">
-              {project.title}
-            </h3>
+        {/* Top Badges */}
+        <div className="absolute top-4 left-4 right-4 z-10 flex items-center justify-between">
+          <span className="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/40 text-white/95 backdrop-blur-md border border-white/15">
+            0{index + 1}
+          </span>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/40 text-white/95 backdrop-blur-md border border-white/15">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+            Live
+          </span>
+        </div>
 
-            {/* Short Description */}
-            <p className="text-xs sm:text-[13px] text-zinc-600 line-clamp-3 leading-relaxed mb-4 font-normal">
-              {project.shortDescription}
-            </p>
+        {/* Bottom Project Info Overlay */}
+        <div className="absolute bottom-0 inset-x-0 p-5 sm:p-6 z-10 flex flex-col justify-end translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+          <span className="text-[11px] font-mono uppercase tracking-wider text-orange-400 mb-1.5 line-clamp-1">
+            {project.category}
+          </span>
+          <h3 className="text-lg sm:text-xl font-medium tracking-tight text-white mb-2 leading-snug">
+            {project.title}
+          </h3>
 
-            {/* Key Technologies: Icons Only */}
-            <div className="flex flex-wrap items-center gap-2">
-              {project.technologies.map((tech) => (
-                <span
-                  key={tech.name}
-                  title={tech.name}
-                  className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-zinc-50 border border-zinc-200/80 hover:bg-white hover:border-zinc-300 hover:scale-110 transition-all shadow-[0_1px_2px_rgba(0,0,0,0.02)]"
-                >
-                  <TechLogo name={tech.name} size={18} className="shrink-0" />
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Action Links */}
-          <div className="pt-4 border-t border-zinc-100 flex items-center justify-between gap-3 mt-4">
-            <span className="inline-flex items-center gap-1 text-xs font-medium text-zinc-900 group-hover:text-zinc-600 transition-colors">
-              <span>Case study</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+          {/* Quick Case Study Link */}
+          <div className="flex items-center justify-between gap-3 pt-2 border-t border-white/15 mt-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="inline-flex items-center gap-1.5 text-xs font-medium text-white/95">
+              <span>View Case Study</span>
+              <ArrowRight className="w-3.5 h-3.5 text-orange-400" />
             </span>
-
-            {/* External live site link */}
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 text-xs font-medium text-zinc-500 hover:text-zinc-950 transition-colors py-1 px-2 rounded-md hover:bg-zinc-100"
-              aria-label={`Open ${project.title} live website in new tab`}
+            <span
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+              }}
+              className="inline-flex items-center gap-1 text-xs text-white/70 hover:text-white transition-colors"
             >
-              <span>Live site</span>
-              <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400" />
-            </a>
+              <span>Live Site</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-white/60" />
+            </span>
           </div>
         </div>
       </Link>
@@ -165,10 +181,9 @@ function Card3D({
 export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Responsive card dimension configuration
   const [dimensions, setDimensions] = useState({
-    cardWidth: 420,
-    cardGap: 32,
+    cardWidth: 260,
+    cardGap: 24,
   });
 
   const [activeCardIndex, setActiveCardIndex] = useState(0);
@@ -177,13 +192,11 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
     const handleResize = () => {
       const width = window.innerWidth;
       if (width < 640) {
-        setDimensions({ cardWidth: 320, cardGap: 16 });
+        setDimensions({ cardWidth: 220, cardGap: 16 });
       } else if (width < 1024) {
-        setDimensions({ cardWidth: 370, cardGap: 24 });
-      } else if (width < 1440) {
-        setDimensions({ cardWidth: 410, cardGap: 30 });
+        setDimensions({ cardWidth: 240, cardGap: 20 });
       } else {
-        setDimensions({ cardWidth: 440, cardGap: 36 });
+        setDimensions({ cardWidth: 270, cardGap: 26 });
       }
     };
 
@@ -198,21 +211,19 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
     offset: ["start start", "end end"],
   });
 
-  // Buttery-smooth spring interpolation to eliminate scroll jitter
+  // Smooth spring interpolation
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 90,
     damping: 24,
     restDelta: 0.001,
   });
 
-  // Calculate track horizontal translation
+  // Calculate horizontal travel
   const stride = dimensions.cardWidth + dimensions.cardGap;
   const totalTravel = Math.max(0, (projects.length - 1) * stride);
-
-  // Track translates from 0 to -totalTravel based on scroll progress
   const trackX = useTransform(smoothProgress, [0, 1], [0, -totalTravel]);
 
-  // Update active card index indicator
+  // Update active index indicator
   useEffect(() => {
     const unsubscribe = smoothProgress.on("change", (latest) => {
       const idx = Math.min(
@@ -224,57 +235,100 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
     return () => unsubscribe();
   }, [smoothProgress, projects.length]);
 
+  const scrollToCard = (index: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const sectionTop = rect.top + window.scrollY;
+    const totalHeight = containerRef.current.offsetHeight;
+    const viewportHeight = window.innerHeight;
+    const scrollableDistance = totalHeight - viewportHeight;
+
+    if (scrollableDistance > 0 && projects.length > 1) {
+      const fraction = index / (projects.length - 1);
+      window.scrollTo({
+        top: sectionTop + fraction * scrollableDistance,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
-    <div id="projects" className="relative scroll-mt-16">
+    <div id="projects" className="relative scroll-mt-16 bg-white">
       {/* =========================================================================
-          DESKTOP & TABLET: SCROLL-DRIVEN 3D CINEMATIC HORIZONTAL SHOWCASE
+          DESKTOP & TABLET: 3D PANORAMIC AMPHITHEATER CAROUSEL (AS PER REFERENCE IMAGE)
           ========================================================================= */}
       <section
         ref={containerRef}
-        className="hidden md:block relative h-[340vh] bg-[#FAFAF9] border-b border-[#E4E4E7]"
+        className="hidden md:block relative h-[320vh] bg-white border-b border-[#E4E4E7]"
       >
-        {/* Sticky inner viewport */}
-        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between py-8 lg:py-10">
-          {/* Header area */}
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-zinc-200/60 pb-6">
-              <div>
-                <p className="text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-400 mb-3">
-                  [ 03 — Portfolio ]
-                </p>
-                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light tracking-tighter uppercase text-zinc-950 leading-[0.92]">
-                  Selected<br />Work
-                </h2>
-              </div>
+        <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-between py-8 lg:py-12">
+          {/* Header Area (Centered, Matching Reference Image) */}
+          <div className="w-full max-w-4xl mx-auto px-4 text-center">
+            {/* Top Amber/Orange Tag */}
+            <p className="text-xs sm:text-sm font-semibold tracking-wide text-orange-600 uppercase mb-3 font-mono">
+              Behind the Designs
+            </p>
 
-              <div className="flex flex-col items-start md:items-end gap-2">
-                <p className="text-[13px] text-zinc-500 leading-relaxed max-w-xs md:text-right">
-                  Scroll down to explore production applications across the 3D showcase.
-                </p>
+            {/* Bold Headline */}
+            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 mb-3.5 leading-tight">
+              Curious What Else I’ve Created?
+            </h2>
 
-                {/* Understated scroll indicator & counter */}
-                <div className="flex items-center gap-3 mt-1">
-                  <span className="text-[11px] font-mono text-zinc-400">
-                    // 0{activeCardIndex + 1} of 0{projects.length}
-                  </span>
-                  <span className="text-zinc-300">•</span>
-                  <span className="inline-flex items-center gap-1.5 text-xs text-zinc-600 font-mono tracking-wider">
-                    <span>Scroll to explore</span>
-                    <span className="animate-pulse">→</span>
-                  </span>
-                </div>
-              </div>
+            {/* Subtitle */}
+            <p className="text-sm sm:text-base text-zinc-500 max-w-xl mx-auto mb-6 font-normal leading-relaxed">
+              Explore full-stack platforms, client systems, and interactive digital engineering in my portfolio.
+            </p>
+
+            {/* "See more Projects ->" Pill Button */}
+            <div className="flex items-center justify-center gap-4">
+              <a
+                href="https://github.com/ayushudaydubey"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full border border-zinc-200/90 bg-white hover:border-zinc-300 text-sm font-medium text-zinc-800 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all group"
+              >
+                <span>See more Projects</span>
+                <span className="w-6 h-6 rounded-full bg-orange-600 text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 shadow-xs">
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </span>
+              </a>
             </div>
           </div>
 
-          {/* 3D Perspective Stage & Moving Track */}
+          {/* 3D Perspective Curved Arc Stage */}
           <div
-            className="relative w-full flex-1 flex items-center overflow-visible"
+            className="relative w-full flex-1 flex items-center overflow-visible my-2"
             style={{
-              perspective: "1300px",
+              perspective: "1400px",
               perspectiveOrigin: "50% 50%",
             }}
           >
+            {/* Left & Right Step Buttons */}
+            <div className="absolute left-6 lg:left-12 z-40">
+              <button
+                type="button"
+                onClick={() => scrollToCard(Math.max(0, activeCardIndex - 1))}
+                disabled={activeCardIndex === 0}
+                aria-label="Previous project"
+                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              >
+                <ChevronLeft className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="absolute right-6 lg:right-12 z-40">
+              <button
+                type="button"
+                onClick={() => scrollToCard(Math.min(projects.length - 1, activeCardIndex + 1))}
+                disabled={activeCardIndex === projects.length - 1}
+                aria-label="Next project"
+                className="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md border border-zinc-200 shadow-md flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:bg-white disabled:opacity-30 disabled:cursor-not-allowed transition-all"
+              >
+                <ChevronRight className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Moving Track */}
             <motion.div
               className="flex items-center"
               style={{
@@ -285,7 +339,7 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
               }}
             >
               {projects.map((project, idx) => (
-                <Card3D
+                <CurvedCard
                   key={project.slug}
                   project={project}
                   index={idx}
@@ -298,35 +352,40 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
             </motion.div>
           </div>
 
-          {/* Bottom Project Navigator Bar */}
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-center justify-between pt-4 border-t border-zinc-200/60 text-xs text-zinc-500">
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-zinc-400">
-                  Current:
+          {/* Bottom 4 Pillars (Matching Reference Image) */}
+          <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-zinc-200/80 text-center">
+              <div>
+                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                  #01
                 </span>
-                <span className="font-medium text-zinc-900 truncate max-w-[260px]">
-                  {projects[activeCardIndex]?.title}
-                </span>
-                <span className="text-zinc-300 hidden sm:inline">•</span>
-                <span className="text-zinc-500 text-[11px] hidden sm:inline">
-                  {projects[activeCardIndex]?.category}
-                </span>
+                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                  Strategy & Planning
+                </h4>
               </div>
-
-              {/* Progress dots indicator */}
-              <div className="flex items-center gap-1.5">
-                {projects.map((p, i) => (
-                  <span
-                    key={p.slug}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      i === activeCardIndex
-                        ? "w-6 bg-zinc-950"
-                        : "w-1.5 bg-zinc-300"
-                    }`}
-                    aria-label={`Project ${i + 1} of ${projects.length}`}
-                  />
-                ))}
+              <div>
+                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                  #02
+                </span>
+                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                  Design & Development
+                </h4>
+              </div>
+              <div>
+                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                  #03
+                </span>
+                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                  Launch & Growth
+                </h4>
+              </div>
+              <div>
+                <span className="text-xs font-mono font-bold text-orange-600 block mb-1">
+                  #04
+                </span>
+                <h4 className="text-sm font-medium text-zinc-900 leading-snug">
+                  Ongoing Support
+                </h4>
               </div>
             </div>
           </div>
@@ -334,105 +393,106 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
       </section>
 
       {/* =========================================================================
-          MOBILE VIEW: ACCESSIBLE HORIZONTAL SWIPE GALLERY (NO SCROLL TRAP)
+          MOBILE VIEW: CURVED TOUCH-FRIENDLY SWIPE SHOWCASE
           ========================================================================= */}
       <section
         id="projects-mobile"
-        className="block md:hidden py-16 sm:py-20 border-b border-[#E4E4E7] bg-[#FAFAF9]"
+        className="block md:hidden py-16 sm:py-20 border-b border-[#E4E4E7] bg-white"
       >
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           {/* Header */}
-          <div className="mb-8 border-b border-zinc-200/60 pb-6">
-            <p className="text-[11px] font-mono uppercase tracking-[0.16em] text-zinc-400 mb-3">
-              [ 03 — Portfolio ]
+          <div className="text-center mb-8">
+            <p className="text-xs font-semibold tracking-wide text-orange-600 uppercase mb-2 font-mono">
+              Behind the Designs
             </p>
-            <h2 className="text-4xl font-light tracking-tighter uppercase text-zinc-950 leading-[0.92] mb-3">
-              Selected<br />Work
+            <h2 className="text-3xl font-bold tracking-tight text-zinc-950 mb-3 leading-tight">
+              Curious What Else I’ve Created?
             </h2>
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              Swipe horizontally to browse through eight production applications.
+            <p className="text-xs text-zinc-500 leading-relaxed max-w-xs mx-auto mb-5">
+              Swipe horizontally to browse through production applications and design systems.
             </p>
+            <a
+              href="https://github.com/ayushudaydubey"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-200 bg-white text-xs font-medium text-zinc-800 shadow-xs"
+            >
+              <span>See more Projects</span>
+              <span className="w-5 h-5 rounded-full bg-orange-600 text-white flex items-center justify-center">
+                <ArrowRight className="w-3 h-3" />
+              </span>
+            </a>
           </div>
 
-          {/* Touch-Friendly Swipe Track */}
+          {/* Swipe Track */}
           <div className="flex gap-4 overflow-x-auto pb-6 pt-2 snap-x snap-mandatory scrollbar-none -mx-4 px-4">
             {projects.map((project, idx) => (
               <div
                 key={project.slug}
-                className="w-[84vw] max-w-[340px] flex-shrink-0 snap-center rounded-2xl bg-white border border-[#E4E4E7] shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden flex flex-col justify-between"
+                className="w-[78vw] max-w-[280px] h-[380px] flex-shrink-0 snap-center rounded-2xl bg-zinc-900 overflow-hidden relative shadow-lg"
               >
-                <Link href={`/projects/${project.slug}`} className="block">
-                  <div className="relative w-full h-[200px] bg-zinc-100 border-b border-[#E4E4E7]">
-                    <Image
-                      src={project.coverImage}
-                      alt={project.title}
-                      fill
-                      sizes="340px"
-                      className="object-cover object-top"
-                    />
+                <Link href={`/projects/${project.slug}`} className="block w-full h-full relative">
+                  <Image
+                    src={project.coverImage}
+                    alt={project.title}
+                    fill
+                    sizes="280px"
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10" />
+
+                  <div className="absolute top-3 left-3 right-3 z-10 flex items-center justify-between">
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/50 text-white border border-white/15">
+                      0{idx + 1}
+                    </span>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-wider bg-black/50 text-white border border-white/15">
+                      Live
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-0 inset-x-0 p-4 z-10">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-orange-400 block mb-1">
+                      {project.category}
+                    </span>
+                    <h3 className="text-base font-medium text-white mb-1.5 leading-snug">
+                      {project.title}
+                    </h3>
+                    <span className="inline-flex items-center gap-1 text-xs text-orange-400">
+                      <span>Explore case study</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </span>
                   </div>
                 </Link>
-
-                <div className="p-5 flex flex-col justify-between flex-1">
-                  <div>
-                    <div className="flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.14em] text-zinc-400 mb-2">
-                      <span>// 0{idx + 1}</span>
-                      <span className="truncate max-w-[180px]">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    <Link href={`/projects/${project.slug}`}>
-                      <h3 className="text-lg font-light tracking-tight text-zinc-950 mb-1.5 hover:text-zinc-600">
-                        {project.title}
-                      </h3>
-                    </Link>
-
-                    <p className="text-xs text-zinc-600 line-clamp-3 leading-relaxed mb-3">
-                      {project.shortDescription}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-1.5 mb-4">
-                      {project.technologies.slice(0, 5).map((tech) => (
-                        <span
-                          key={tech.name}
-                          title={tech.name}
-                          className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-zinc-50 border border-zinc-200/80"
-                        >
-                          <TechLogo name={tech.name} size={16} className="shrink-0" />
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-3 border-t border-zinc-100 flex items-center justify-between">
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="text-xs font-medium text-zinc-900 inline-flex items-center gap-1"
-                    >
-                      <span>Case study</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </Link>
-
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-xs font-medium text-zinc-500 hover:text-zinc-950 inline-flex items-center gap-1"
-                    >
-                      <span>Live site</span>
-                      <ArrowUpRight className="w-3.5 h-3.5" />
-                    </a>
-                  </div>
-                </div>
               </div>
             ))}
           </div>
 
-          {/* Swipe indicator */}
-          <div className="mt-4 flex items-center justify-between text-[11px] font-mono text-zinc-400">
-            <span>Swipe to explore →</span>
-            <span>8 Production Projects</span>
+          {/* Mobile Bottom 4 Pillars */}
+          <div className="grid grid-cols-2 gap-4 pt-6 border-t border-zinc-200/70 text-center mt-6">
+            <div>
+              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
+                #01
+              </span>
+              <h4 className="text-xs font-medium text-zinc-900">Strategy & Planning</h4>
+            </div>
+            <div>
+              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
+                #02
+              </span>
+              <h4 className="text-xs font-medium text-zinc-900">Design & Development</h4>
+            </div>
+            <div>
+              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
+                #03
+              </span>
+              <h4 className="text-xs font-medium text-zinc-900">Launch & Growth</h4>
+            </div>
+            <div>
+              <span className="text-xs font-mono font-bold text-orange-600 block mb-0.5">
+                #04
+              </span>
+              <h4 className="text-xs font-medium text-zinc-900">Ongoing Support</h4>
+            </div>
           </div>
         </div>
       </section>

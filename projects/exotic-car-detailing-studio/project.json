@@ -2,7 +2,7 @@
   "slug": "exotic-car-detailing-studio",
   "title": "Exotic Car Detailing Studio",
   "category": "Full Stack Commercial Web Application",
-  "order": 5,
+  "order": 6,
   "shortDescription": "A high-end luxury automotive detailing booking and service studio website featuring an interactive package customizer, appointment scheduling, and dark glassmorphic styling.",
   "overview": "Exotic Car Detailing Studio is a bespoke web platform built for high-end luxury vehicle care, ceramic coating, and paint protection film (PPF) specialists. It pairs a dark, metallic luxury aesthetic with a dynamic service package configurator and a robust scheduling backend.",
   "problem": "Supercar owners require specialized care packages based on vehicle paint condition, clear coat thickness, and finish type. Standard static web pages failed to convey the premium craftsmanship or provide transparent custom quoting.",

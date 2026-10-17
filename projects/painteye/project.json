@@ -2,7 +2,7 @@
   "slug": "painteye",
   "title": "PaintEye",
   "category": "Full Stack Next.js & Visual Intelligence",
-  "order": 6,
+  "order": 7,
   "shortDescription": "A modern color analytics and architectural paint visualizer powered by Next.js App Router, Prisma ORM, and PostgreSQL with RGB/HEX spectral mapping.",
   "overview": "PaintEye is an advanced web application designed for interior designers, architects, and paint specialists. It delivers instant color palette extraction from user-uploaded room photos, simulates realistic ambient lighting transformations, and provides real-time catalog search backed by Prisma ORM and PostgreSQL with indexed CIE-Lab color distance matching.",
   "problem": "Selecting paint colors from digital screens often fails in practice because standard RGB displays ignore ambient lighting shifts, surface undertones, and paint finish reflectance, leading to costly repainting projects.",

@@ -1,0 +1,88 @@
+{
+  "slug": "quickzy",
+  "title": "Quickzy",
+  "category": "Full Stack MERN E-Commerce Platform",
+  "order": 4,
+  "shortDescription": "A high-performance full-stack MERN e-commerce application featuring optimistic UI cart updates, atomic inventory management, faceted filtering, and secure JWT authentication.",
+  "overview": "Quickzy is an enterprise-grade full-stack MERN e-commerce web platform engineered for sub-second catalog interactions and zero-lag shopping cart workflows. Designed with React, Redux Toolkit, Node.js, Express, and MongoDB, Quickzy delivers instant client-side cart updates with server reconciliation, atomic database increments to prevent inventory overselling, and responsive faceted search across high-volume product catalogs.",
+  "problem": "High-traffic e-commerce experiences often suffer from sluggish cart mutations caused by blocking server roundtrips, alongside race conditions during peak flash sales that lead to overselling and negative inventory states.",
+  "solution": "Architected an optimistic UI state machine with Redux Toolkit that reflects cart updates in 0ms while asynchronously syncing with Node.js/Express REST APIs, paired with atomic MongoDB $inc operations with stock threshold constraints to guarantee zero inventory anomalies.",
+  "role": "Full Stack Developer",
+  "timeline": "3 Months",
+  "featured": true,
+  "liveUrl": "https://quickzy-ecommerce.vercel.app/",
+  "githubUrl": "https://github.com/ayushudaydubey",
+  "coverImage": "images/cover.svg",
+  "accentColor": "cyan",
+  "screenshots": [
+    {
+      "url": "images/screen-1.svg",
+      "caption": "Product catalog interface featuring real-time faceted category and price range filtering.",
+      "alt": "Quickzy product catalog and faceted filter sidebar"
+    },
+    {
+      "url": "images/screen-2.svg",
+      "caption": "Slide-over shopping cart drawer with instant optimistic item mutations and promo code discounts.",
+      "alt": "Quickzy slide-over cart drawer with promo code validation"
+    },
+    {
+      "url": "images/screen-3.svg",
+      "caption": "Admin inventory portal with real-time stock matrix and atomic depletion threshold alerts.",
+      "alt": "Quickzy admin inventory management matrix"
+    }
+  ],
+  "metrics": [
+    { "label": "Search Latency", "value": "< 25ms instant filters" },
+    { "label": "Cart Feedback", "value": "0ms optimistic updates" },
+    { "label": "Inventory Safety", "value": "Atomic MongoDB $inc guard" },
+    { "label": "Security", "value": "JWT HttpOnly & RBAC" }
+  ],
+  "technologies": [
+    { "name": "React", "category": "Frontend" },
+    { "name": "Redux Toolkit", "category": "Frontend" },
+    { "name": "Tailwind CSS", "category": "Frontend" },
+    { "name": "Node.js", "category": "Backend" },
+    { "name": "Express.js", "category": "Backend" },
+    { "name": "MongoDB", "category": "Database" }
+  ],
+  "features": [
+    {
+      "title": "Optimistic UI Cart Engine",
+      "description": "Zero-latency shopping cart mutations powered by Redux Toolkit with automatic server rollback on network failure.",
+      "icon": "ShoppingCart"
+    },
+    {
+      "title": "Atomic Inventory Management",
+      "description": "Race-condition-free stock reservations using atomic Mongoose conditional updates during concurrent checkout bursts.",
+      "icon": "ShieldCheck"
+    },
+    {
+      "title": "Faceted Catalog Search",
+      "description": "Debounced multi-attribute search across categories, price brackets, and ratings with sub-25ms response times.",
+      "icon": "Search"
+    },
+    {
+      "title": "Role-Based Admin Dashboard",
+      "description": "Administrative suite for live stock tracking, SKU adjustments, order lifecycle statuses, and inventory threshold warnings.",
+      "icon": "BarChart3"
+    }
+  ],
+  "contributions": [
+    "Architected end-to-end MERN stack application with clean separation of frontend components, REST controllers, and database models.",
+    "Engineered optimistic state management in Redux Toolkit for seamless cart additions, removals, and quantity modifications.",
+    "Implemented atomic MongoDB update queries to prevent overselling during simultaneous multi-user checkout sessions.",
+    "Designed and built full responsive UI with Tailwind CSS, slide-over cart drawers, and administrative product controls."
+  ],
+  "challenges": [
+    {
+      "title": "Eliminating Race Conditions in Flash Sale Checkouts",
+      "challenge": "Concurrent checkout requests for low-stock items could read stale inventory values and result in overselling.",
+      "solution": "Replaced standard read-then-write logic with atomic Product.findOneAndUpdate({ _id: id, stock: { $gte: qty } }, { $inc: { stock: -qty } }) queries ensuring strict database-level concurrency control."
+    },
+    {
+      "title": "Cart Latency and Offline Resilience",
+      "challenge": "Network latency caused noticeable delays between clicking 'Add to Cart' and user feedback, causing repeated clicks.",
+      "solution": "Implemented an optimistic mutation layer with Redux Toolkit that updates local state immediately, syncing with the backend in the background and gracefully rolling back if the request fails."
+    }
+  ]
+}

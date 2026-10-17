@@ -303,7 +303,7 @@ export function getAllProjects(forceReload = false): Project[] {
     const slug = folder.name;
     const projectFolder = path.join(projectsDir, slug);
 
-    if (slug === "quickzy" || slug === "test-auto-discovery-project" || slug.startsWith("test-")) {
+    if (slug === "test-auto-discovery-project" || slug.startsWith("test-")) {
       try {
         if (fs.existsSync(projectFolder)) {
           fs.rmSync(projectFolder, { recursive: true, force: true });

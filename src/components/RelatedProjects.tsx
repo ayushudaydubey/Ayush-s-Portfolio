@@ -64,7 +64,7 @@ export function RelatedProjects({
             Other<br />Projects
           </h2>
           <p className="text-[15px] text-zinc-600">
-            Selected from the eight production works.
+            Selected from the production works.
           </p>
         </div>
 

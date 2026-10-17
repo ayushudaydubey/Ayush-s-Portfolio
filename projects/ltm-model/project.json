@@ -2,7 +2,7 @@
   "slug": "ltm-model",
   "title": "LTM Model",
   "category": "AI & Neural Language Memory Platform",
-  "order": 8,
+  "order": 9,
   "shortDescription": "A high-performance machine learning deployment interface for Long-Term Memory (LTM) models, featuring sequence inference, memory retention benchmarks, and dynamic parameter tuning.",
   "overview": "LTM Model is a dedicated web interface and API deployment for experimenting with Long-Term Memory language architectures. Designed for AI engineers and researchers, it enables users to test token context retention across extended sequence windows, visualize attention decay, calibrate temperature and top-p sampling, and benchmark inference latencies.",
   "problem": "Evaluating language models with extended context lengths typically requires running local command-line scripts or heavy notebooks that are inaccessible to non-ML teammates and stakeholders.",
