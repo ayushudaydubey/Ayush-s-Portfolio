@@ -3,6 +3,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   motion,
   useScroll,
@@ -10,7 +11,7 @@ import {
   useSpring,
   type MotionValue,
 } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
 import type { Project } from "@/src/types/project";
 
 interface ProjectShowcase3DProps {
@@ -34,6 +35,14 @@ function CurvedCard({
   cardWidth,
   cardGap,
 }: CurvedCardProps) {
+  const router = useRouter();
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    router.push(`/projects/${project.slug}`);
+  };
+
   // Target progress when this card is at the center of the 3D amphitheater
   const targetP = totalCards > 1 ? index / (totalCards - 1) : 0;
   const step = totalCards > 1 ? 1 / (totalCards - 1) : 0.2;
@@ -98,6 +107,18 @@ function CurvedCard({
     [0.2, 0.95, 1, 0.95, 0.2]
   );
 
+  const zIndex = useTransform(
+    smoothProgress,
+    [
+      targetP - step * 1.5,
+      targetP - step * 0.5,
+      targetP,
+      targetP + step * 0.5,
+      targetP + step * 1.5,
+    ],
+    [5, 20, 30, 20, 5]
+  );
+
   return (
     <motion.div
       className="relative flex-shrink-0 select-none"
@@ -110,16 +131,18 @@ function CurvedCard({
         z,
         y,
         opacity,
+        zIndex,
       }}
     >
       <Link
         href={`/projects/${project.slug}`}
+        onClick={handleCardClick}
         title={project.title}
-        aria-label={project.title}
-        className="group relative block w-full aspect-video rounded-2xl sm:rounded-3xl bg-zinc-950 overflow-hidden shadow-[0_16px_45px_rgba(0,0,0,0.18)] hover:shadow-[0_24px_60px_rgba(0,0,0,0.3)] hover:-translate-y-1 transition-all duration-300"
+        aria-label={`View ${project.title} project details`}
+        className="group/card block w-full cursor-pointer pointer-events-auto"
       >
-        {/* Full-Bleed 16:9 Screenshot Visual (Complete 100% Uncut Image Display) */}
-        <div className="absolute inset-0 w-full h-full bg-zinc-950 flex items-center justify-center">
+        {/* Full visual without border */}
+        <div className="relative w-full aspect-video rounded-2xl sm:rounded-3xl overflow-hidden border-0 border-none outline-none ring-0 shadow-[0_12px_36px_rgba(0,0,0,0.12)] group-hover/card:shadow-[0_20px_48px_rgba(0,0,0,0.22)] group-hover/card:-translate-y-1 transition-all duration-300">
           <Image
             src={project.coverImage}
             alt={project.title}
@@ -128,6 +151,17 @@ function CurvedCard({
             className="object-cover object-center"
             priority={index < 3}
           />
+        </div>
+
+        {/* Project Name Mentioned Below Every Card */}
+        <div className="mt-3 sm:mt-3.5 text-center px-1">
+          <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-[0.16em] text-[#A1A1AA] block mb-0.5 sm:mb-1">
+            {project.category}
+          </span>
+          <h3 className="text-sm sm:text-base font-medium text-zinc-900 group-hover/card:text-blue-600 transition-colors tracking-tight flex items-center justify-center gap-1.5">
+            <span>{project.title}</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-zinc-400 group-hover/card:text-blue-600 group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-all" />
+          </h3>
         </div>
       </Link>
     </motion.div>
@@ -221,29 +255,29 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
   };
 
   return (
-    <div id="projects" className="relative scroll-mt-16 bg-white">
+    <div id="projects" className="relative scroll-mt-16 bg-[#FAFAF9]">
       {/* =========================================================================
           UNIFIED SCROLL-DRIVEN 3D AMPHITHEATER CAROUSEL (MOBILE & DESKTOP)
           ========================================================================= */}
       <section
         ref={containerRef}
-        className="relative h-[240vh] bg-white border-b border-[#E4E4E7]"
+        className="relative h-[240vh] bg-[#FAFAF9] border-b border-[#E4E4E7]"
       >
         <div className="sticky top-16 sm:top-20 h-[calc(100dvh-4rem)] sm:h-[calc(100vh-5rem)] w-full overflow-hidden flex flex-col justify-between py-4 sm:py-8 lg:py-12">
-          {/* Header Area (Centered, Matching Reference Image) */}
+          {/* Header Area (Editorial Theme Typography) */}
           <div className="w-full max-w-4xl mx-auto px-4 text-center">
-            {/* Top Amber/Orange Tag */}
-            <p className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-wide text-orange-600 uppercase mb-1.5 sm:mb-3 font-mono">
-              Behind the Designs
+            {/* Project Theme Eyebrow Tag */}
+            <p className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#A1A1AA] mb-2 sm:mb-3">
+              [ 03 — Featured Projects ]
             </p>
 
-            {/* Bold Headline */}
-            <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-950 mb-2 sm:mb-3.5 leading-tight">
-              Curious What Else I’ve Created?
+            {/* Signature Editorial Headline */}
+            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tighter uppercase text-zinc-950 mb-3 sm:mb-4 leading-[0.92]">
+              Curious What Else<br className="hidden sm:inline" /> I&apos;ve Created?
             </h2>
 
             {/* Subtitle */}
-            <p className="text-xs sm:text-sm md:text-base text-zinc-500 max-w-xl mx-auto mb-3 sm:mb-6 font-normal leading-relaxed">
+            <p className="text-[14px] sm:text-[15px] font-light text-zinc-500 max-w-xl mx-auto mb-4 sm:mb-6 leading-relaxed">
               Explore full-stack platforms, client systems, and interactive digital engineering in my portfolio.
             </p>
 
@@ -253,10 +287,10 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
                 href="https://github.com/ayushudaydubey"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 sm:gap-3 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-zinc-200/90 bg-white hover:border-zinc-300 text-xs sm:text-sm font-medium text-zinc-800 shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_16px_rgba(0,0,0,0.08)] transition-all group"
+                className="inline-flex items-center gap-2.5 sm:gap-3 px-5 py-2.5 rounded-full border border-zinc-200 bg-white hover:border-zinc-300 hover:bg-zinc-50 text-xs sm:text-sm font-medium text-zinc-900 shadow-xs transition-all group cursor-pointer"
               >
                 <span>See more Projects</span>
-                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-orange-600 text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5 shadow-xs">
+                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-zinc-950 text-white flex items-center justify-center transition-transform group-hover:translate-x-0.5">
                   <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                 </span>
               </a>
@@ -322,38 +356,38 @@ export function ProjectShowcase3D({ projects }: ProjectShowcase3DProps) {
             </motion.div>
           </div>
 
-          {/* Bottom 4 Pillars (Matching Reference Image) */}
+          {/* Bottom 4 Pillars */}
           <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pt-3 sm:pt-6 border-t border-zinc-200/80 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6 pt-3 sm:pt-6 border-t border-[#E4E4E7] text-center">
               <div>
-                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
-                  #01
+                <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#A1A1AA] block mb-1">
+                  01
                 </span>
-                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
-                  Strategy & Planning
+                <h4 className="text-xs sm:text-[13px] font-light uppercase tracking-tight text-zinc-900 leading-snug">
+                  Strategy &amp; Planning
                 </h4>
               </div>
               <div>
-                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
-                  #02
+                <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#A1A1AA] block mb-1">
+                  02
                 </span>
-                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
-                  Design & Development
+                <h4 className="text-xs sm:text-[13px] font-light uppercase tracking-tight text-zinc-900 leading-snug">
+                  Design &amp; Development
                 </h4>
               </div>
               <div>
-                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
-                  #03
+                <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#A1A1AA] block mb-1">
+                  03
                 </span>
-                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
-                  Launch & Growth
+                <h4 className="text-xs sm:text-[13px] font-light uppercase tracking-tight text-zinc-900 leading-snug">
+                  Launch &amp; Growth
                 </h4>
               </div>
               <div>
-                <span className="text-[10px] sm:text-xs font-mono font-bold text-orange-600 block mb-0.5 sm:mb-1">
-                  #04
+                <span className="text-[11px] font-mono uppercase tracking-[0.18em] text-[#A1A1AA] block mb-1">
+                  04
                 </span>
-                <h4 className="text-xs sm:text-sm font-medium text-zinc-900 leading-snug">
+                <h4 className="text-xs sm:text-[13px] font-light uppercase tracking-tight text-zinc-900 leading-snug">
                   Ongoing Support
                 </h4>
               </div>
