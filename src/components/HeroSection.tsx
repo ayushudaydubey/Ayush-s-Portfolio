@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
@@ -8,7 +8,6 @@ import {
   motion,
   useScroll,
   useTransform,
-  useReducedMotion,
 } from "framer-motion";
 import { TechLogo } from "./TechLogo";
 
@@ -53,7 +52,16 @@ const itemVariants = {
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const shouldReduceMotion = useReducedMotion();
+
+  // Guarantee that on initial page load or reload, the mobile/desktop viewport starts at the top (HeroSection)
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
+      window.scrollTo(0, 0);
+    }
+  }, []);
 
   // Subtle scroll-driven parallax for buttery-smooth scrolling transition
   const { scrollYProgress } = useScroll({
@@ -61,21 +69,9 @@ export function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const contentY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, shouldReduceMotion ? 0 : 50]
-  );
-  const contentOpacity = useTransform(
-    scrollYProgress,
-    [0, 0.85],
-    [1, shouldReduceMotion ? 1 : 0.15]
-  );
-  const imageY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0, shouldReduceMotion ? 0 : 60]
-  );
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.15]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, 50]);
 
   return (
     <section
@@ -110,7 +106,7 @@ export function HeroSection() {
         <div className="flex flex-col items-start text-left w-full max-w-xl lg:max-w-2xl bg-transparent p-0 border-none shadow-none ring-0">
           {/* Small uppercase label */}
           <motion.div
-            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45, ease: "easeOut" }}
             className="mb-3.5"
@@ -122,9 +118,9 @@ export function HeroSection() {
 
           {/* Main Heading */}
           <motion.h1
-            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.08, ease: "easeOut" }}
+            transition={{ duration: 0.55, delay: 0.08, ease: "easeOut" }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-light tracking-tighter uppercase text-white md:text-zinc-950 mb-4 leading-[0.94] break-words drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] md:drop-shadow-none"
           >
             Hi, I&apos;m<br />Ayush Dubey.
@@ -132,7 +128,7 @@ export function HeroSection() {
 
           {/* Supporting Headline */}
           <motion.p
-            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.16, ease: "easeOut" }}
             className="text-lg sm:text-2xl font-light text-white md:text-zinc-700 tracking-tight mb-5 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] md:drop-shadow-none"
@@ -142,7 +138,7 @@ export function HeroSection() {
 
           {/* Concise Introduction */}
           <motion.p
-            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 14 }}
+            initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.22, ease: "easeOut" }}
             className="text-[15px] sm:text-base text-white/95 md:text-zinc-600 leading-relaxed max-w-xl mb-8 drop-shadow-[0_1px_2px_rgba(0,0,0,0.7)] md:drop-shadow-none"
@@ -152,7 +148,7 @@ export function HeroSection() {
 
           {/* Action CTAs */}
           <motion.div
-            initial={shouldReduceMotion ? undefined : { opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.28, ease: "easeOut" }}
             className="flex flex-wrap items-center gap-3 mb-10"
@@ -175,7 +171,7 @@ export function HeroSection() {
 
           {/* Verified Core Technologies with Smooth Scroll & Loading Entrance */}
           <motion.div
-            initial={shouldReduceMotion ? undefined : "hidden"}
+            initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={containerVariants}

@@ -405,9 +405,9 @@ export function Footer() {
         className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 will-change-transform"
         style={{ transformStyle: "preserve-3d" }}
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10 mb-14">
           {/* Identity Column */}
-          <div className="md:col-span-2">
+          <div className="col-span-2 md:col-span-2">
             <p
               className="footer-mono-label text-[11px] font-mono uppercase tracking-[0.16em] mb-3"
               style={{ color: "var(--footer-label)" }}
@@ -495,8 +495,8 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Navigation Links Column */}
-          <div>
+          {/* Navigation Links Column (Left side on mobile) */}
+          <div className="col-span-1">
             <h4
               className="footer-mono-label text-[11px] font-mono uppercase tracking-[0.16em] mb-4"
               style={{ color: "var(--footer-label)" }}
@@ -525,8 +525,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Case Studies Column */}
-          <div>
+          {/* Case Studies Column (Right side on mobile) */}
+          <div className="col-span-1">
             <h4
               className="footer-mono-label text-[11px] font-mono uppercase tracking-[0.16em] mb-4"
               style={{ color: "var(--footer-label)" }}
@@ -565,15 +565,15 @@ export function Footer() {
 
         {/* Bottom bar */}
         <div
-          className="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono uppercase tracking-wider"
+          className="flex flex-row items-center justify-between gap-2 text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-zinc-400"
           style={{ color: "var(--footer-label)" }}
         >
-          <p>© {new Date().getFullYear()} AYUSH DUBEY. ALL RIGHTS RESERVED.</p>
+          <p className="truncate">© {new Date().getFullYear()} AYUSH DUBEY.</p>
 
           <button
             type="button"
             onClick={scrollToTop}
-            className="group flex items-center gap-1.5 transition-colors duration-200 text-zinc-500 hover:text-zinc-950 cursor-pointer select-none"
+            className="group flex items-center gap-1.5 transition-colors duration-200 text-zinc-500 hover:text-zinc-950 cursor-pointer select-none whitespace-nowrap flex-shrink-0"
             aria-label="Scroll back to top"
           >
             <span>Back to top</span>

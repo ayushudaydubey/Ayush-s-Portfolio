@@ -42,15 +42,26 @@ export function SkillsSection() {
     }
   });
 
-  // Keep the active category pill centered horizontally on mobile during scroll
+  // Keep the active category pill centered horizontally on mobile during scroll (only internal container, never window scroll)
+  const isFirstMount = useRef(true);
+
   useEffect(() => {
-    if (mobilePillsRef.current) {
-      const activeBtn = mobilePillsRef.current.children[activeIndex] as HTMLElement | undefined;
+    if (isFirstMount.current) {
+      isFirstMount.current = false;
+      return;
+    }
+
+    const container = mobilePillsRef.current;
+    if (container) {
+      const activeBtn = container.children[activeIndex] as HTMLElement | undefined;
       if (activeBtn) {
-        activeBtn.scrollIntoView({
+        const targetScrollLeft =
+          activeBtn.offsetLeft -
+          container.offsetWidth / 2 +
+          activeBtn.offsetWidth / 2;
+        container.scrollTo({
+          left: targetScrollLeft,
           behavior: "smooth",
-          block: "nearest",
-          inline: "center",
         });
       }
     }
